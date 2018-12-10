@@ -60,11 +60,14 @@ public abstract class Area implements Playable {
 	private Button space;
 	private TextGraphics unpause;
 	
+	/**
+	 * Method describing if the area has been played already or not
+	 * @return played (boolean) : true if the area has already been played, false otherwise
+	 */
 	public boolean isPlayed() {
 		return played;
 	}
 
-    // TODO implements me #PROJECT #TUTO
 	/** @return (float): camera scale factor, assume it is the same in x and y direction */
     public abstract float getCameraScaleFactor();
     	
@@ -182,6 +185,10 @@ public abstract class Area implements Playable {
 		return true;
     }
     
+    /**
+     * Choose the actor on which the view is centered
+     * @param a (Actor) : actor on which the camera is centered
+     */
     public final void setViewCandidate(Actor a) {
     	viewCandidate = a;
     }
@@ -196,6 +203,9 @@ public abstract class Area implements Playable {
         return true;
     }
     
+    /**
+     * Register & Unregister actors from the waiting list, and process all interactables to enter and leave the area
+     */
     private final void purgeRegistration() {
     	for (Actor a : registeredActors) {
     		addActor(a, false);
@@ -256,6 +266,9 @@ public abstract class Area implements Playable {
     	}
     }
    
+    /**
+     * Update the camera position and image size
+     */
     private void updateCamera() {
         
     	if (!(viewCandidate == null)) {
@@ -278,10 +291,22 @@ public abstract class Area implements Playable {
         // TODO save the AreaState somewhere
     }
     
+    /**
+     * Set the area's behavior
+     * Note: cannot be overridden
+     * @param ab (AreaBehavior) : this area's behavior
+     */
     protected final void setBehavior(AreaBehavior ab) {
     	areaBehavior = ab;
     }
     
+    /**
+     * Entity leaving area cells
+     * Note: cannot be overridden
+     * @param entity (Interactable) : entity leaving the area cells
+     * @param coordinates (List<DiscreteCoordinates>) : list of coordinates of the area cells being left by the entity
+     * @return canLeave (boolean) : true if the entity can leave the area cells, false otherwise
+     */
     public final boolean leaveAreaCells(Interactable entity, List<DiscreteCoordinates> coordinates) {
     	boolean canLeave = areaBehavior.canLeave(entity, coordinates);
     	if (canLeave) {
@@ -290,6 +315,13 @@ public abstract class Area implements Playable {
     	return canLeave;
     }
     
+    /**
+     * Entity entering area cells
+     * Note: cannot be overridden
+     * @param entity (Interactable) : entity entering the area cells
+     * @param coordinates (List<DiscreteCoordinates>) : list of coordinates of the area cells being entered by the entity
+     * @return canEnter (boolean) : true if the entity can enter the area cells, false otherwise
+     */
     public final boolean enterAreaCells(Interactable entity, List<DiscreteCoordinates> coordinates) {
     	boolean canEnter = areaBehavior.canEnter(entity, coordinates);
     	if (canEnter) {
@@ -298,10 +330,19 @@ public abstract class Area implements Playable {
     	return canEnter;
     }
     
+    /**
+     * Check if coordinates are in the grid
+     * @param coordinates (DiscreteCoordinates) : coordinates to check
+     * @return (boolean) : true if the coordinates are in the grid, false if they are outside
+     */
     public boolean isInGrid(DiscreteCoordinates coordinates) {
     	return areaBehavior.isInGrid(coordinates);
     }
     
+    /**
+     * Getter for the area window
+     * @return window (Window) : area's window
+     */
     public Window getWindow() {
     	return window;
     }
