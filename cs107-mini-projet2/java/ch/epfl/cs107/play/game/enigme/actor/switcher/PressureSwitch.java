@@ -16,7 +16,7 @@ public class PressureSwitch extends Switcher {
 	private Sprite imageOn, imageOff;
 	
 	/**
-	 * Constructor of a pressure switch
+	 * Constructor of a pressure switch with default initial state off
 	 * @param area (Area) : the area to which the pressure switch belongs
 	 * @param position (DiscreteCoordinates) : the position of the pressure switch in the area
 	 */

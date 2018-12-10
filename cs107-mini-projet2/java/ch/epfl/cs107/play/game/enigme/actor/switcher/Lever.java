@@ -17,7 +17,7 @@ public class Lever extends Switcher {
 	private Sprite imageOn, imageOff;
 	
 	/**
-	 * Constructor of a lever
+	 * Constructor of a lever with default inital state off
 	 * @param area (Area) : the area to which the lever belongs
 	 * @param position (DiscreteCoordinates) : the position of the lever in the area
 	 */

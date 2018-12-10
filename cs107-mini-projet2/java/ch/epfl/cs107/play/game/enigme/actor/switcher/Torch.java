@@ -15,12 +15,23 @@ public class Torch extends Switcher {
 	private Sprite imageOff;
 	private Animation animationOn;
 	
+	/**
+	 * Constructor of a torch
+	 * @param area (Area) : the area to which the torch belongs
+	 * @param position (DiscreteCoordinates) : the position of the torch in the area
+	 * @param isOn (boolean) : the initial state of the torch
+	 */
 	public Torch(Area area, DiscreteCoordinates position, boolean isOn) {
 		super(area, position, isOn, new Dialog("Press L to turn me on/off", "dialog.1", area));
 		animationOn = new Animation(this, Vector.ZERO, 2f, 10, "torch.ground.on.1", "torch.ground.on.2");
 		this.imageOff = new Sprite("torch.ground.off", 0.5f * 2f, 0.65625f * 2f, this);
 	}
 	
+	/**
+	 * Constructor of a torch with default initial state off
+	 * @param area (Area) : the area to which the torch belongs
+	 * @param position (DiscreteCoordinates) : the position of the torch in the area
+	 */
 	public Torch(Area area, DiscreteCoordinates position) {
 		super(area, position, false, new Dialog("Press L to turn me on/off", "dialog.1", area));
 		animationOn = new Animation(this, Vector.ZERO, 2f, 10, "torch.ground.on.1", "torch.ground.on.2");
