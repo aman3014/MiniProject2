@@ -113,4 +113,29 @@ public abstract class MovableAreaEntity extends AreaEntity {
     	DiscreteCoordinates coord = getCurrentMainCellCoordinates();
     	return Arrays.asList(coord.jump(getOrientation().toVector()));
     }
+    
+	/**
+	 * Method used to make the Demo2Player enter an area
+	 * @param area (Area) : the area into which the Demo2Player should enter
+	 * @param position (DiscreteCoordinates) : the position of the Demo2Player in the new area
+	 */
+	public void	enterArea(Area area , DiscreteCoordinates position) {
+		area.registerActor(this);
+		area.enterAreaCells(this, Arrays.asList(position));
+		setCurrentPosition(position.toVector());
+		this.resetMotion();
+		this.setOwnerArea(area);
+	}
+
+	/**
+	 * Method used to make the Demo2Player leave an area
+	 * @param area (Area) : the area which the Demo2Player should leave
+	 * @param position (DiscreteCoordinates) : the position from the Demo2Player should be removed from the area
+	 */
+	public void leaveArea(Area area, DiscreteCoordinates position) {
+		area.unregisterActor(this);
+		area.leaveAreaCells(this, Arrays.asList(position));
+		this.resetMotion();
+		this.setOwnerArea(null);
+	}
 }

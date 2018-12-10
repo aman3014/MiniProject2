@@ -7,6 +7,7 @@ import ch.epfl.cs107.play.game.areagame.Area;
 import ch.epfl.cs107.play.game.areagame.actor.MovableAreaEntity;
 import ch.epfl.cs107.play.game.areagame.actor.Orientation;
 import ch.epfl.cs107.play.game.areagame.actor.Sprite;
+import ch.epfl.cs107.play.game.areagame.handler.AreaInteractionVisitor;
 import ch.epfl.cs107.play.game.enigme.area.demo2.Demo2Area;
 import ch.epfl.cs107.play.game.enigme.area.demo2.Room0;
 import ch.epfl.cs107.play.math.DiscreteCoordinates;
@@ -28,35 +29,35 @@ public class Demo2Player extends MovableAreaEntity {
 	// Animation duration in frame number
 	private final static int ANIMATION_DURATION = 8;
 	
+	/**
+	 * Constructor for a Demo2Player
+	 * @param area (Area) : the initial area to which the player belongs
+	 * @param orientation (Orientation) : the initial orientation of the player
+	 * @param position (DiscreteCoordinates) : the initial position of the player in the area
+	 */
 	public Demo2Player(Area area, Orientation orientation, DiscreteCoordinates position) {
 		super(area, orientation, position);
 		image = new Sprite("ghost.1", 1, 1.f, this);
 		passingDoor = ((Demo2Area)getOwnerArea()).isOnDoor(getCurrentMainCellCoordinates());
 	}
 	
+	/**
+	 * Constructor for a Demo2Player (the default orientation is set to DOWN)
+	 * @param area (Area) : the initial area to which the player belongs
+	 * @param position (DiscreteCoordinates) : the initial position of the player in the area
+	 */
 	public Demo2Player(Area area, DiscreteCoordinates position) {
 		super(area, Orientation.DOWN, position);
 		image = new Sprite("ghost.1", 1, 1.f, this);
 		passingDoor = ((Demo2Area)getOwnerArea()).isOnDoor(getCurrentMainCellCoordinates());
 	}
 	
+	/**
+	 * Method indicating if the Demo2Player is passing a Door
+	 * @return boolean : true if the Demo2Player is passing a Door
+	 */
 	public boolean isPassingDoor() {
 		return passingDoor;
-	}
-	
-	public void	enterArea(Area area , DiscreteCoordinates position) {
-		area.registerActor(this);
-		area.enterAreaCells(this, Arrays.asList(position));
-		setCurrentPosition(position.toVector());
-		this.resetMotion();
-		this.setOwnerArea(area);
-	}
-
-	public void leaveArea(Area area, DiscreteCoordinates position) {
-		area.unregisterActor(this);
-		area.leaveAreaCells(this, Arrays.asList(position));
-		this.resetMotion();
-		this.setOwnerArea(null);
 	}
 	
 	@Override
@@ -110,12 +111,11 @@ public class Demo2Player extends MovableAreaEntity {
 			}
 		}
 	}
-	
-	private DiscreteCoordinates getCurrentMainCellCoordinate() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
+	/**
+	 * Method used to set if the Demo2Player is passing a door
+	 * @param bool (boolean) : the value to which passingDoor should be set to
+	 */
 	public void setPassingDoor(boolean bool) {
 		this.passingDoor = bool;
 	}
@@ -144,12 +144,10 @@ public class Demo2Player extends MovableAreaEntity {
 	public void draw(Canvas canvas) {
 		image.draw(canvas);
 	}
-	
-	public void setCurrentPosition(Vector v) {
-		super.setCurrentPosition(v);
-	}
-	
-	public Area getOwnerArea() {
-		return super.getOwnerArea();
+
+	@Override
+	public void acceptInteraction(AreaInteractionVisitor v) {
+		// The interactions were not implemented at this stage of the project
+		// Empty method inserted to avoid compilation errors
 	}
 }
