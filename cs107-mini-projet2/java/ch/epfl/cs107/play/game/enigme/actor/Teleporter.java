@@ -26,8 +26,8 @@ public class Teleporter extends AreaEntity implements Talker {
 	private DiscreteCoordinates arrivalCoordinates;
 	private Orientation arrivalOrientation;
 	
-	public Teleporter(Area area, Orientation orientation, DiscreteCoordinates position, DiscreteCoordinates arrivalCoordinates, Orientation arrivalOrientation) {
-		super(area, orientation, position);
+	public Teleporter(Area area, DiscreteCoordinates position, DiscreteCoordinates arrivalCoordinates, Orientation arrivalOrientation) {
+		super(area, Orientation.DOWN, position);
 		
 		this.arrivalCoordinates = arrivalCoordinates;
 		this.arrivalOrientation = arrivalOrientation;

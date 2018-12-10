@@ -67,8 +67,8 @@ public class Enigme2 extends EnigmeArea {
 		
 		fastShoes = new FastShoes(this, new DiscreteCoordinates(8, 11));
 		
-		teleporter1 = new Teleporter(this, Orientation.DOWN, new DiscreteCoordinates(13, 8), new DiscreteCoordinates(8, 10), Orientation.UP);
-		teleporter2 = new Teleporter(this, Orientation.DOWN, new DiscreteCoordinates(10, 11), new DiscreteCoordinates(13, 7), Orientation.DOWN);
+		teleporter1 = new Teleporter(this, new DiscreteCoordinates(13, 8), new DiscreteCoordinates(8, 10), Orientation.UP);
+		teleporter2 = new Teleporter(this, new DiscreteCoordinates(10, 11), new DiscreteCoordinates(13, 7), Orientation.DOWN);
 		
 		pressurePlate = new PressurePlate(this, new DiscreteCoordinates(13, 4), 1.9f);
 		
