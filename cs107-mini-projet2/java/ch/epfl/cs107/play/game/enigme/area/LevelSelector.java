@@ -1,8 +1,3 @@
-/*
- *	Author:      Aman Bansal
- *	Date:        2 déc. 2018
- */
-
 package ch.epfl.cs107.play.game.enigme.area;
 
 import java.util.List;
