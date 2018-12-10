@@ -11,13 +11,33 @@ import java.util.List;
  */
 public interface Interactable {
     
+	/**
+	 * Getter for the cells the interactable is currently occupying
+	 * @return List<DiscreteCoordinates> : list of coordinates of the cells occupied by the interactable
+	 */
 	public List<DiscreteCoordinates> getCurrentCells();
 	
+	/**
+	 * Method describing if the interactable takes the cell space it occupies
+	 * @return boolean : true if interactable takes cell space, false otherwise
+	 */
 	public boolean takeCellSpace();
 	
+	/**
+	 * Method describing if the interactable accepts interactions by distance
+	 * @return boolean : true if interactable accepts interactions by distance, false otherwise
+	 */
 	public boolean isViewInteractable();
 	
+	/**
+	 * Method describing if the interactable accepts interactions by contact
+	 * @return boolean : true if interactable accepts interactions by contact, false otherwise
+	 */
 	public boolean isCellInteractable();
 	
+	/**
+	 * Method accepting and putting in action an interaction between v and the interactable
+	 * @param v (AreaInteractionVisitor) : entity which handles the interactions of the interactor who wishes to interact with interactable
+	 */
 	public void acceptInteraction(AreaInteractionVisitor v);
 }

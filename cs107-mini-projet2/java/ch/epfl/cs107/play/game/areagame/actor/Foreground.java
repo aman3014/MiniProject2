@@ -14,6 +14,11 @@ import ch.epfl.cs107.play.math.RegionOfInterest;
 import ch.epfl.cs107.play.math.Vector;
 import ch.epfl.cs107.play.window.Canvas;
 
+/**
+ * Actors representing a foreground
+ * @author Julian Blackwell
+ * @author Aman Bansal
+ */
 public class Foreground extends Entity {
    
 	/// Sprite of the actor

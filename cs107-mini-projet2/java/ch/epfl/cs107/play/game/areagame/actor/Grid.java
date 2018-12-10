@@ -59,6 +59,10 @@ public class Grid extends Entity {
         border = new Polyline(true, 0,0,0, height, width, height, width, 0);
     }
 
+    /**
+     * Grid Constructor
+     * @param area (Area) : the area on which the grid is to be drawn
+     */
     public Grid(Area area) {
         this(area.getWidth(), area.getHeight());
     }
