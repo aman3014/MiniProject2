@@ -23,11 +23,10 @@ public class SignalRock extends AreaEntity {
 	private Sprite image;
 	
 	/**
-	 * 
-	 * @param signal
-	 * @param area
-	 * @param orientation
-	 * @param position
+	 * Constructor for a Signal Rock
+	 * @param signal (Logic) : the logic signal on which the signal rock depends
+	 * @param area (Area) : the area to which the signal rock belongs
+	 * @param position (DiscreteCoordaintes) : the position of the signal rock in the area
 	 */
 	public SignalRock(Logic signal, Area area, DiscreteCoordinates position) {
 		super(area, Orientation.DOWN, position);
@@ -35,6 +34,7 @@ public class SignalRock extends AreaEntity {
 		this.image = new Sprite("rock.3", 1, 1.f, this);
 	}
 	
+	@Override
 	public void acceptInteraction(AreaInteractionVisitor v) {
 		((EnigmeInteractionVisitor) v).interactWith(this);
 	}
@@ -59,6 +59,7 @@ public class SignalRock extends AreaEntity {
 		return false;
 	}
 		
+	@Override
 	public void draw(Canvas canvas) {
 		if (!signal.isOn()) {
 			image.draw(canvas);
