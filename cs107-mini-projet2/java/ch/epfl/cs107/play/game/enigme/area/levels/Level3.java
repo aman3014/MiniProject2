@@ -1,8 +1,3 @@
-/*
- *	Author:      Aman Bansal
- *	Date:        5 déc. 2018
- */
-
 package ch.epfl.cs107.play.game.enigme.area.levels;
 
 import java.util.LinkedList;
