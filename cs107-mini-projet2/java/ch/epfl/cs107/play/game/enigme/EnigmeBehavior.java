@@ -8,6 +8,7 @@ package ch.epfl.cs107.play.game.enigme;
 import ch.epfl.cs107.play.game.areagame.AreaBehavior;
 import ch.epfl.cs107.play.game.areagame.actor.Interactable;
 import ch.epfl.cs107.play.game.areagame.handler.AreaInteractionVisitor;
+import ch.epfl.cs107.play.game.enigme.actor.EnigmePlayer;
 import ch.epfl.cs107.play.game.enigme.handler.EnigmeInteractionVisitor;
 import ch.epfl.cs107.play.window.Image;
 import ch.epfl.cs107.play.window.Window;
@@ -70,7 +71,19 @@ public class EnigmeBehavior extends AreaBehavior {
 
 		@Override
 		protected boolean canEnter(Interactable entity) {
-			if (takeCellSpace() || nature.equals(EnigmeCellType.NULL)) {
+			
+			if (nature.equals(EnigmeCellType.NULL)) {
+				return false;
+			}
+			
+			// Exceptional case for a EnigmePlayer who is flying
+			if (entity instanceof EnigmePlayer) {
+				if (((EnigmePlayer)entity).isFlying()) {
+					return true;
+				}
+			}
+			
+			if (takeCellSpace()) {
 				return false;
 			} else { 
 				return true;

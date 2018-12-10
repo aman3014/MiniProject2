@@ -35,7 +35,8 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 	private DiscreteCoordinates lastMainCellCoordinates;
 
 	// Useful for animation of the sprite
-	private Animation animation;
+	private Animation animationGround;
+	private Animation animationSky;
 	private final static int ANIMATION_DELAY = 4;
 	private int animationDelay;
 	
@@ -49,6 +50,7 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 	private Button upArrow;
 	private Button downArrow;
 	private Button keyW;
+	private Button keyF;
 	
 	// Follower
 	private Orientation lastOrientation;
@@ -63,6 +65,7 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 	
 	//Useful for flying
 	private boolean hasEgg;
+	private boolean flying;
 	
 	// Animation duration in frame number
 	final static int ANIMATION_DURATION = 8;
@@ -78,12 +81,14 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 		handler = new EnigmePlayerHandler();
 		
 		animationDelay = ANIMATION_DELAY;
-		animation = new Animation(this, new Vector(0.25f, 0.32f).div(2f), 1.5f, animationDelay, "max.new.3");
+		animationGround = new Animation(this, new Vector(0.25f, 0.32f).div(2f), 1.5f, animationDelay, "max.new.3");
+		animationSky = new Animation(this, new Vector(0.25f, 0.32f).div(2f), 1.5f, animationDelay, "bird.2");
 		animationDuration = ANIMATION_DURATION;
 		hasFastShoes = false;
 		fastShoesOn = false;
 		
 		hasEgg = false;
+		flying = false;
 		
 		lastOrientation = orientation;
 		
@@ -101,16 +106,22 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 		handler = new EnigmePlayerHandler();
 		
 		animationDelay = ANIMATION_DELAY;
-		animation = new Animation(this, new Vector(0.25f, 0.32f).div(2f), 1.5f, animationDelay, "max.new.3");
+		animationGround = new Animation(this, new Vector(0.25f, 0.32f).div(2f), 1.5f, animationDelay, "max.new.3");
+		animationSky = new Animation(this, new Vector(0.25f, 0.32f).div(2f), 1.5f, animationDelay, "bird.2");
 		animationDuration = ANIMATION_DURATION;
 		hasFastShoes = false;
 		fastShoesOn = false;
 		
 		hasEgg = false;
+		flying = false;
 		
 		lastOrientation = Orientation.DOWN;
 		
 		this.keyboard = this.getOwnerArea().getKeyboard();
+	}
+	
+	public boolean isFlying() {
+		return flying;
 	}
 	
 	public void setFollower(Follower follower) {
@@ -155,14 +166,20 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 		upArrow = keyboard.get(Keyboard.UP);
 		downArrow = keyboard.get(Keyboard.DOWN);
 		keyW = keyboard.get(Keyboard.W);
+		keyF = keyboard.get(Keyboard.F);
 		
 		if (hasFastShoes && keyW.isReleased()) {
 			fastShoesInteraction();
 		}
 		
+		if (hasEgg && keyF.isReleased()) {
+			flying = !flying;
+		}
+		
 		if (isMoving()) {
 			super.update(deltaTime);
-			animation.updateAnimationCounter();
+			animationGround.updateAnimationCounter();
+			animationSky.updateAnimationCounter();
 			
 			if (!lastMainCellCoordinates.equals(getCurrentMainCellCoordinates())) {
 				lastOrientation = this.getOrientation();
@@ -202,7 +219,8 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 					this.setOrientation(Orientation.DOWN);
 				}
 			} else {
-				animation.resetAnimationCounter();
+				animationGround.resetAnimationCounter();
+				animationSky.resetAnimationCounter();
 			}
 		}
 	}
@@ -217,7 +235,7 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 			animationDuration = ANIMATION_DURATION;
 		}
 		follower.setAnimation(animationDelay, animationDuration);
-		animation.changeAnimationDelay(animationDelay);
+		animationGround.changeAnimationDelay(animationDelay);
 	}
 	
 	public void setIsPassingDoor(Door door) {
@@ -251,7 +269,11 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 
 	@Override
 	public void draw(Canvas canvas) {
-		animation.draw(canvas, this.getOrientation());
+		if (flying) {
+			animationSky.draw(canvas, getOrientation());
+		} else {
+			animationGround.draw(canvas, this.getOrientation());
+		}
 	}
 	
 	public void setCurrentPosition(Vector v) {

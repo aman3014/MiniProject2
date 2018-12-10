@@ -10,6 +10,7 @@ public interface Keyboard {
     int A = 65;
     int B = 66;
     int D = 68;
+    int F = 70;
     int I = 73;
     int K = 75;
     int L = 76;
