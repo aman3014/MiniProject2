@@ -15,6 +15,15 @@ public class SignalDoor extends Door {
 	private Logic signal;
 	private final Sprite close = new Sprite("door.close.1", 1, 1.f, this);
 	
+	/**
+	 * Constructor of a Signal Door
+	 * @param signal (Logic) : the logic signal on which the signal door depends
+	 * @param area (Area) : the area to which the signal door belongs
+	 * @param destAreaName (String) : the name of the destination area of the signal door
+	 * @param destCoord (DiscreteCoordinates
+	 * @param position
+	 * @param occupiedCells
+	 */
 	public SignalDoor(Logic signal, Area area, String destAreaName, DiscreteCoordinates destCoord, DiscreteCoordinates position, DiscreteCoordinates... occupiedCells) {
 		super(area, destAreaName, destCoord, position, occupiedCells);
 		this.signal = signal;
