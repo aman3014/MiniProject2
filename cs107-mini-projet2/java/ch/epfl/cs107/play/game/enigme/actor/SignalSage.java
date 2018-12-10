@@ -16,19 +16,19 @@ import ch.epfl.cs107.play.signal.logic.Logic;
  * extends Sage; implements Logic
  * @author Aman Bansal, Julian Blackwell
  */
-public class SageSignal extends Sage implements Logic {
+public class SignalSage extends Sage implements Logic {
 
 	private Orientation correctOrientation;
 	
 	/**
-	 * 
-	 * @param area
+	 * Constructor of a SageSignal
+	 * @param area (Area) : the area to which the sage sig
 	 * @param orientation
 	 * @param position
 	 * @param wisdom
 	 * @param correctOrientation
 	 */
-	public SageSignal(Area area, Orientation orientation, DiscreteCoordinates position, String wisdom, Orientation correctOrientation) {
+	public SignalSage(Area area, Orientation orientation, DiscreteCoordinates position, String wisdom, Orientation correctOrientation) {
 		super(area, orientation, position, wisdom);
 		this.correctOrientation = correctOrientation;
 	}
