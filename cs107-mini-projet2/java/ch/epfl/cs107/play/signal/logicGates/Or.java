@@ -9,7 +9,7 @@ import ch.epfl.cs107.play.signal.logic.Logic;
 import ch.epfl.cs107.play.signal.logic.LogicSignal;
 
 /**
- * Class modelizing the "OR" logic gate for two signals
+ * Class modelizing the "OR" logic gate for two logic signals
  * @author Julian Blackwell
  * @author Aman Bansal
  *
