@@ -19,7 +19,8 @@ import ch.epfl.cs107.play.window.Canvas;
 public class Follower extends MovableAreaEntity {
 
 	private EnigmePlayer parent;
-	private Animation animation;
+	private Animation animationGround;
+	private Animation animationSky;
 	
 	private int animationDuration;
 		
@@ -28,7 +29,8 @@ public class Follower extends MovableAreaEntity {
 																		(int) parent.getPosition().sub(parent.getOrientation().toVector()).y));
 		this.parent = parent;
 		
-		this.animation = new Animation(this, new Vector(0.25f, 0.32f), 1f, 4, "max.ghost");
+		this.animationGround = new Animation(this, new Vector(0.25f, 0.32f), 1f, EnigmePlayer.ANIMATION_DELAY, "max.ghost");
+		this.animationSky = new Animation(Float.MAX_VALUE, this, new Vector(0.25f, 0.32f), 1f, EnigmePlayer.ANIMATION_DELAY, "bird.1");
 	}
 	
 	public void update(float deltaTime) {
@@ -37,9 +39,11 @@ public class Follower extends MovableAreaEntity {
 				forceMove(animationDuration);
 			}
 			super.update(deltaTime);
-			animation.updateAnimationCounter();	
+			animationGround.updateAnimationCounter();	
+			animationSky.updateAnimationCounter();
 		} else {
-			animation.resetAnimationCounter();
+			animationGround.resetAnimationCounter();
+			animationSky.resetAnimationCounter();
 		}
 		
 		this.setOrientation(parent.getLastOrientation());
@@ -87,7 +91,11 @@ public class Follower extends MovableAreaEntity {
 
 	@Override
 	public void draw(Canvas canvas) {
-		animation.draw(canvas, getOrientation());
+		if (parent.isFlying()) {
+			animationSky.draw(canvas, getOrientation());
+		} else {
+			animationGround.draw(canvas, getOrientation());
+		}
 	}
 	
 	@Override
@@ -109,7 +117,7 @@ public class Follower extends MovableAreaEntity {
 	}
 	
 	public void setAnimation(int animationDelay, int animationDuration) {
-		animation.changeAnimationDelay(animationDelay);
+		animationGround.changeAnimationDelay(animationDelay);
 		this.animationDuration = animationDuration;
 	}
 }

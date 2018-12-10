@@ -10,9 +10,11 @@ import java.util.List;
 import ch.epfl.cs107.play.game.actor.Actor;
 import ch.epfl.cs107.play.game.areagame.actor.Foreground;
 import ch.epfl.cs107.play.game.areagame.actor.Orientation;
+import ch.epfl.cs107.play.game.enigme.actor.Sage;
 import ch.epfl.cs107.play.game.enigme.actor.SignalDoor;
 import ch.epfl.cs107.play.game.enigme.actor.SignalRock;
 import ch.epfl.cs107.play.game.enigme.actor.collectable.Egg;
+import ch.epfl.cs107.play.game.enigme.actor.collectable.Key;
 import ch.epfl.cs107.play.game.enigme.actor.switcher.Bonfire;
 import ch.epfl.cs107.play.game.enigme.actor.switcher.SignalSage;
 import ch.epfl.cs107.play.game.enigme.area.EnigmeArea;
@@ -29,6 +31,8 @@ private Actor doorToLevelSelector;
 private Actor egg;
 private Actor signalRock;
 private Actor bonfire;
+private Actor key;
+private Actor sageIntro;
 private Actor sageNorth, sageEast, sageSouth, sageWest;
 	
 	@Override
@@ -37,8 +41,13 @@ private Actor sageNorth, sageEast, sageSouth, sageWest;
 	}
 	
 	public boolean begin(Window window, FileSystem fileSystem) {
-		DiscreteCoordinates position = new DiscreteCoordinates(5, 0);
-		doorToLevelSelector = new SignalDoor(Logic.TRUE, this, "LevelSelector", new DiscreteCoordinates(1, 6), Orientation.DOWN, position, position);
+		
+		key = new Key(this, Orientation.DOWN, new DiscreteCoordinates(28, 1));
+		
+		DiscreteCoordinates position = new DiscreteCoordinates(4, 0);
+		doorToLevelSelector = new SignalDoor((Logic) key, this, "LevelSelector", new DiscreteCoordinates(1, 6), Orientation.DOWN, position, position);
+		
+		sageIntro = new Sage(this, Orientation.UP, new DiscreteCoordinates(10, 24), "The key to the door is found on a far away land. And Remember! Helping others on your way is the key to getting there !");
 		
 		sageNorth = new SignalSage(this, Orientation.DOWN, new DiscreteCoordinates(6, 14), "I want to see North", Orientation.UP);
 		sageEast = new SignalSage(this, Orientation.LEFT, new DiscreteCoordinates(4, 16), "I want to see the sun rise", Orientation.RIGHT);
@@ -62,7 +71,9 @@ private Actor sageNorth, sageEast, sageSouth, sageWest;
 	protected void addAllActors(List<Actor> actors) {
 		actors.add(doorToLevelSelector);
 		actors.add(egg);
+		actors.add(key);
 		actors.add(signalRock);
+		actors.add(sageIntro);
 		actors.add(sageNorth);
 		actors.add(sageEast);
 		actors.add(sageSouth);

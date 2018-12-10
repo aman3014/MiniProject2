@@ -37,7 +37,7 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 	// Useful for animation of the sprite
 	private Animation animationGround;
 	private Animation animationSky;
-	private final static int ANIMATION_DELAY = 4;
+	final static int ANIMATION_DELAY = 4;
 	private int animationDelay;
 	
 	// Follower as an attribute is useful for teleportation
@@ -82,7 +82,7 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 		
 		animationDelay = ANIMATION_DELAY;
 		animationGround = new Animation(this, new Vector(0.25f, 0.32f).div(2f), 1.5f, animationDelay, "max.new.3");
-		animationSky = new Animation(this, new Vector(0.25f, 0.32f).div(2f), 1.5f, animationDelay, "bird.2");
+		animationSky = new Animation(Float.MAX_VALUE, this, new Vector(0.25f, 0.32f).div(2f), 1.5f, ANIMATION_DELAY, "bird.2");
 		animationDuration = ANIMATION_DURATION;
 		hasFastShoes = false;
 		fastShoesOn = false;
@@ -107,7 +107,7 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 		
 		animationDelay = ANIMATION_DELAY;
 		animationGround = new Animation(this, new Vector(0.25f, 0.32f).div(2f), 1.5f, animationDelay, "max.new.3");
-		animationSky = new Animation(this, new Vector(0.25f, 0.32f).div(2f), 1.5f, animationDelay, "bird.2");
+		animationSky = new Animation(Float.MAX_VALUE, this, new Vector(0.25f, 0.32f).div(2f), 1.5f, ANIMATION_DELAY, "bird.2");
 		animationDuration = ANIMATION_DURATION;
 		hasFastShoes = false;
 		fastShoesOn = false;

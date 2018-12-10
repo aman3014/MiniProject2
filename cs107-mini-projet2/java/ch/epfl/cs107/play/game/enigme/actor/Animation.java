@@ -19,6 +19,8 @@ public class Animation {
 	private float sizeFactor;
 	private Positionable parent;
 	private int delay;
+	
+	private float depthCorrection;
 			
 	public Animation(Positionable parent, Vector anchor, float sizeFactor, int delay, String...spriteNames) {
 		animationCounter = 0;
@@ -37,6 +39,39 @@ public class Animation {
 		this.sizeFactor = sizeFactor;
 		this.parent = parent;
 		this.delay = delay;
+		depthCorrection = 0;
+		
+		initializeSprites();
+	}
+	
+	/**
+	 * Constructor for Animation with depth correction
+	 * @param depthCorrection
+	 * @param parent
+	 * @param anchor
+	 * @param sizeFactor
+	 * @param delay
+	 * @param spriteNames
+	 */
+	public Animation(float depthCorrection, Positionable parent, Vector anchor, float sizeFactor, int delay, String...spriteNames) {
+		animationCounter = 0;
+		counter = 0;
+		
+		this.spriteNames = new ArrayList<String>();
+		this.sprites = new ArrayList<Sprite>();
+		
+		if (spriteNames != null) {
+			for (String spriteName : spriteNames) {
+				this.spriteNames.add(spriteName);
+			}
+		}
+		
+		this.anchor = anchor;
+		this.sizeFactor = sizeFactor;
+		this.parent = parent;
+		this.delay = delay;
+		
+		this.depthCorrection = depthCorrection;
 		initializeSprites();
 	}
 	
@@ -59,11 +94,11 @@ public class Animation {
 	private void initializeSprites() {
 		if (spriteNames.size() == 1) {
 			for (int i = 0; i < 16; ++i) {
-				sprites.add(new Sprite(spriteNames.get(0), 0.50f * sizeFactor, 0.65625f * sizeFactor, parent, new RegionOfInterest((i / 4) * 16, (i % 4) * 21, 16, 21), anchor));
+				sprites.add(new Sprite(spriteNames.get(0), 0.50f * sizeFactor, 0.65625f * sizeFactor, parent, new RegionOfInterest((i / 4) * 16, (i % 4) * 21, 16, 21), anchor, 1f, depthCorrection));
 			}
 		} else {
 			for (int i = 0; i < spriteNames.size(); ++i) {
-				sprites.add(new Sprite(spriteNames.get(i), 0.50f * sizeFactor, 0.65625f * sizeFactor, parent, null, anchor));
+				sprites.add(new Sprite(spriteNames.get(i), 0.50f * sizeFactor, 0.65625f * sizeFactor, parent, null, anchor, 1f, depthCorrection));
 			}
 		}
 	}

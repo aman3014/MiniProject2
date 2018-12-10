@@ -25,7 +25,7 @@ public class Sage extends AreaEntity implements Talker {
 	
 	public Sage(Area area, Orientation orientation, DiscreteCoordinates position, String wisdom) {
 		super(area, orientation, position);
-		animation = new Animation(this, Vector.ZERO, 1.5f, 1, "old.man.1");
+		animation = new Animation(this, new Vector(0.13f, 0.13f), 1.5f, 1, "old.man.1");
 		this.wisdom = new Dialog(wisdom, "dialog.1", area);
 		this.dialog = new Dialog("Hold the S key to obtain the Sage's wisdom", "dialog.1", area);
 		animation.updateAnimationCounter();
