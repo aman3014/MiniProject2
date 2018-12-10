@@ -32,7 +32,7 @@ public class Teleporter extends AreaEntity implements Talker {
 		this.arrivalCoordinates = arrivalCoordinates;
 		this.arrivalOrientation = arrivalOrientation;
 		
-		animation = new Animation(this, new Vector(0.25f, 0), 1f, 5, "ingot.1", "ingot.2", "ingot.3", "ingot.4", "ingot.5");
+		animation = new Animation(this, new Vector(0.25f, 0.16f), 1f, 5, "ingot.1", "ingot.2", "ingot.3", "ingot.4", "ingot.5");
 		
 		dialog = new Dialog("Press Enter to teleport to a mysterious place", "dialog.1", area);
 	}
