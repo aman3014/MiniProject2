@@ -1,8 +1,3 @@
-/*
- *	Author:      Julian Blackwell
- *	Date:        2 déc. 2018
- */
-
 package ch.epfl.cs107.play.game.enigme.actor;
 
 import java.util.LinkedList;
@@ -18,6 +13,10 @@ import ch.epfl.cs107.play.math.DiscreteCoordinates;
 import ch.epfl.cs107.play.math.Vector;
 import ch.epfl.cs107.play.window.Canvas;
 
+/**
+ * Class door representing a door; extends AreaEntity
+ * @author Julian Blackwell, Aman Bansal
+ */
 public class Door extends AreaEntity {
 	
 	private String destAreaName;

@@ -128,21 +128,6 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 		this.follower = follower;
 		follower.setAnimation(animationDelay, animationDuration);
 	}
-	
-	public void	enterArea(Area area , DiscreteCoordinates position) {
-		area.registerActor(this);
-		area.enterAreaCells(this, Arrays.asList(position));
-		setCurrentPosition(position.toVector());
-		this.resetMotion();
-		this.setOwnerArea(area);
-	}
-
-	public void leaveArea(Area area, DiscreteCoordinates position) {
-		area.unregisterActor(this);
-		area.leaveAreaCells(this, Arrays.asList(position));
-		this.resetMotion();
-		this.setOwnerArea(null);
-	}
 
 	public void interactWith(Interactable other) {
 		other.acceptInteraction(handler);

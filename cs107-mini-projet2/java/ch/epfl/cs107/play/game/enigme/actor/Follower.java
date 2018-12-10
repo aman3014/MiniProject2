@@ -71,21 +71,6 @@ public class Follower extends MovableAreaEntity {
 	public void acceptInteraction(AreaInteractionVisitor v) {
 		// Not interactable
 	}
-	
-	public void	enterArea(Area area , DiscreteCoordinates position) {
-		area.registerActor(this);
-		area.enterAreaCells(this, Arrays.asList(position));
-		setCurrentPosition(position.toVector());
-		this.resetMotion();
-		this.setOwnerArea(area);
-	}
-
-	public void leaveArea(Area area, DiscreteCoordinates position) {
-		area.unregisterActor(this);
-		area.leaveAreaCells(this, Arrays.asList(position));
-		this.resetMotion();
-		this.setOwnerArea(null);
-	}
 
 	@Override
 	public void draw(Canvas canvas) {
