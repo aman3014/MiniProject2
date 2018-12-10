@@ -181,10 +181,10 @@ public abstract class AreaBehavior
     }
     
     /**
-     * 
-     * @param entity
-     * @param coordinates
-     * @return boolean : true if the entity can leave all of the cells specified by the coordinates in the list
+     * Method indicating if an entity can leave the cell at the coordinates (in the singleton list)
+     * @param entity (Interactable) : the entity which wants to leave the cell at the coordinates
+     * @param coordinates (List<DiscreteCoordinates>) : singleton list containing the coordinates of the cell which needs to be left
+     * @return boolean : true if the entity can leave the cell specified by the coordinates in the list
      */
     public boolean canLeave(Interactable entity, List<DiscreteCoordinates> coordinates) {
     	for (DiscreteCoordinates coord : coordinates) {
@@ -195,6 +195,12 @@ public abstract class AreaBehavior
     	return true;
     }
 
+    /**
+     * Method indicating if an entity can enter the cell at the coordinates (in the singleton list)
+     * @param entity (Interactable) : the entity which wants to enter the cell at the coordinates
+     * @param coordinates (List<DiscreteCoordinates>) : singleton list containing the coordinates of the cell which needs to be entered
+     * @return boolean : true if the entity can enter the cell specified by the coordinates in the list
+     */
     public boolean canEnter(Interactable entity, List<DiscreteCoordinates> coordinates) {
     	for (DiscreteCoordinates coord : coordinates) {
     		if (!isInGrid(coord)) {
@@ -207,35 +213,62 @@ public abstract class AreaBehavior
     	return true;
     }
     
+    /**
+     * Method making the entity leave the cell at the coordinates in the list
+     * @param entity (Interactable) : the entity which wants to leave the cell
+     * @param coordinates (List<DiscreteCoordinates) : singleton list containing the coordinates of the cell which needs to be left
+     */
     protected void leave(Interactable entity, List<DiscreteCoordinates> coordinates) {
     	for (DiscreteCoordinates coord : coordinates) {
     		cells[coord.x][coord.y].leave(entity);
     	}
     }
     
+    /**
+     * Method making the entity enter the cell at the coordinates in the list
+     * @param entity (Interactable) : the entity which wants to enter the cell
+     * @param coordinates (List<DiscreteCoordinates) : singleton list containing the coordinates of the cell which needs to be entered
+     */
     protected void enter(Interactable entity, List<DiscreteCoordinates> coordinates) {
     	for (DiscreteCoordinates coord : coordinates) {
     		cells[coord.x][coord.y].enter(entity);
     	}
     }
-    
+
+    /**
+     * Method calling the cellInteractionOf method of the interactor's current cell
+     * @param interactor (Interactor) : the interactor who wants to interact with the cell-interactable interactables in his cell
+     */
     public void cellInteractionOf(Interactor interactor) {
     	for (DiscreteCoordinates coord : interactor.getCurrentCells()) {
     		cells[coord.x][coord.y].cellInteractionOf(interactor);
     	}
     }
-    
+
+    /**
+     * Method calling the viewInteractionOf method of the cell in the interactor's field of view
+     * @param interactor (Interactor) : the interactor who wants to interact with the cell-interactable interactables in his cell
+     */
     public void viewInteractionOf(Interactor interactor) {
     	for (DiscreteCoordinates coord : interactor.getFieldOfViewCells()) {
     		cells[coord.x][coord.y].viewInteractionOf(interactor);
     	}
     }
     
+    /**
+     * Method returning the cell specified by the coordinates in the parameter
+     * @param coordinates (DiscreteCoordinates) : the coordinates
+     * @return cell (Cell) : the cell specified by the coordinates
+     */
     protected Cell getCell(DiscreteCoordinates coordinates) {    	
     	return cells[coordinates.x][coordinates.y];
     }
     
-    
+    /**
+     * Method checking if there exists a cell at the coordinates sent in the parameter
+     * @param coordinates (DiscreteCoordinates) : the coordinates
+     * @return boolean : true if there exists a cell at the coordinates specified by the coordinates
+     */
     public boolean isInGrid(DiscreteCoordinates coordinates) {
     	if (coordinates.x < cells.length && coordinates.x >= 0 && coordinates.y < cells[coordinates.x].length && coordinates.y >= 0) {
     		return true;
