@@ -9,7 +9,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import ch.epfl.cs107.play.game.actor.Actor;
-import ch.epfl.cs107.play.game.areagame.actor.Orientation;
 import ch.epfl.cs107.play.game.enigme.actor.PressurePlate;
 import ch.epfl.cs107.play.game.enigme.actor.SignalDoor;
 import ch.epfl.cs107.play.game.enigme.actor.SignalRock;
@@ -26,8 +25,14 @@ import ch.epfl.cs107.play.signal.logicGates.Not;
 import ch.epfl.cs107.play.signal.logicGates.Or;
 import ch.epfl.cs107.play.window.Window;
 
+/**
+ * Level 3 "Room/Level" (instance of EnigmeArea)
+ * @author Julian Blackwell, Aman Bansal
+ *
+ */
 public class Level3 extends EnigmeArea {
 	
+	//Actors "living/playing" in the area
 	private Actor key, torch, pressurePlate, signalDoor;
 	private List<Actor> pressureSwitches;
 	private List<Actor> levers;
@@ -38,7 +43,10 @@ public class Level3 extends EnigmeArea {
 		return "Level3";
 	}
 	
+	@Override
 	public boolean begin(Window window, FileSystem fileSystem) {
+		
+		//Initializing positions and signals for all actors
 		
 		key = new Key(this, new DiscreteCoordinates(1, 3));
 		
