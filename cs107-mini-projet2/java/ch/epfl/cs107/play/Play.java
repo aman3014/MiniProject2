@@ -59,6 +59,7 @@ public class Play {
                         System.out.println("Thread sleep interrupted");
                     }
 
+                    //Update time variables to keep track of time progression
                     currentTime = System.nanoTime();
                     deltaTime = (currentTime - lastTime) / ONE_SEC;
 

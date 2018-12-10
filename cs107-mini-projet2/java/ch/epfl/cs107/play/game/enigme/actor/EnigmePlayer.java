@@ -234,8 +234,8 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 			animationDelay = ANIMATION_DELAY;
 			animationDuration = ANIMATION_DURATION;
 		}
-		follower.setAnimation(animationDelay, animationDuration);
 		animationGround.changeAnimationDelay(animationDelay);
+		follower.setAnimation(animationDelay, animationDuration);
 	}
 	
 	public void setIsPassingDoor(Door door) {
@@ -435,5 +435,13 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 	
 	public boolean isMoving() {
 		return super.isMoving();
+	}
+	
+	public boolean hasShoes() {
+		return hasFastShoes;
+	}
+	
+	public boolean shoesOn() {
+		return fastShoesOn;
 	}
 }
