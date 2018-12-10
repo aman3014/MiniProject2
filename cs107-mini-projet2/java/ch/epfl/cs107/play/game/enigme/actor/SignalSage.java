@@ -21,12 +21,12 @@ public class SignalSage extends Sage implements Logic {
 	private Orientation correctOrientation;
 	
 	/**
-	 * Constructor of a SageSignal
-	 * @param area (Area) : the area to which the sage sig
-	 * @param orientation
-	 * @param position
-	 * @param wisdom
-	 * @param correctOrientation
+	 * Constructor of a SignalSage
+	 * @param area (Area) : the area to which the signal sage belongs
+	 * @param orientation (Orientation) : the initial orientation of the signal sage
+	 * @param position (DiscreteCoordinates) : the position of the signal sage in the area
+	 * @param wisdom (String) : the wisdom/knowledge the sage can share with an interactor
+	 * @param correctOrientation (Orientation) : the orientation of the sage for which the logic signal sage will be turned on
 	 */
 	public SignalSage(Area area, Orientation orientation, DiscreteCoordinates position, String wisdom, Orientation correctOrientation) {
 		super(area, orientation, position, wisdom);

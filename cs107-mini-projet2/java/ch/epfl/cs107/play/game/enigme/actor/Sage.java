@@ -28,7 +28,7 @@ public class Sage extends AreaEntity implements Talker {
 	 * @param area (Area) : the area to which the sage belongs
 	 * @param orientation (Orientation) : the initial orientation of the sage
 	 * @param position (DiscreteCoordinates) : the position of the sage in the area
-	 * @param wisdom (String) : the wisdom/knowledge the sage gives when interacted with
+	 * @param wisdom (String) : the wisdom/knowledge the sage can share with an interactor
 	 */
 	public Sage(Area area, Orientation orientation, DiscreteCoordinates position, String wisdom) {
 		super(area, orientation, position);
