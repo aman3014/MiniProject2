@@ -1,8 +1,3 @@
-/*
- *	Author:      Aman Bansal
- *	Date:        28 nov. 2018
- */
-
 package ch.epfl.cs107.play.game.enigme.actor;
 
 import java.util.Arrays;
@@ -21,6 +16,10 @@ import ch.epfl.cs107.play.window.Canvas;
 import ch.epfl.cs107.play.window.Keyboard;
 import ch.epfl.cs107.play.window.Window;
 
+/**
+ * Class Demo2Player 
+ * @author Aman Bansal, Julian Blackwell
+ */
 public class Demo2Player extends MovableAreaEntity {
 
 	private boolean passingDoor;

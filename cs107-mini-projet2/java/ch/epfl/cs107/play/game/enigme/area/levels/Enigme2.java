@@ -60,12 +60,12 @@ public class Enigme2 extends EnigmeArea {
 	
 	public boolean begin(Window window, FileSystem fileSystem) {
 	
-		key = new Key(this, Orientation.DOWN, new DiscreteCoordinates(6, 10));
+		key = new Key(this, new DiscreteCoordinates(6, 10));
 		
 		DiscreteCoordinates position = new DiscreteCoordinates(7, 0);
 		doorToLevelSelector = new SignalDoor((Logic) key, this, "LevelSelector", new DiscreteCoordinates(4, 6), Orientation.DOWN, position, position);
 		
-		fastShoes = new FastShoes(this, Orientation.DOWN, new DiscreteCoordinates(8, 11));
+		fastShoes = new FastShoes(this, new DiscreteCoordinates(8, 11));
 		
 		teleporter1 = new Teleporter(this, Orientation.DOWN, new DiscreteCoordinates(13, 8), new DiscreteCoordinates(8, 10), Orientation.UP);
 		teleporter2 = new Teleporter(this, Orientation.DOWN, new DiscreteCoordinates(10, 11), new DiscreteCoordinates(13, 7), Orientation.DOWN);

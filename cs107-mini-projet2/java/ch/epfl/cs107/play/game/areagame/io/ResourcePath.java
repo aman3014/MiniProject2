@@ -1,6 +1,5 @@
 package ch.epfl.cs107.play.game.areagame.io;
 
-
 public class ResourcePath {
 
     /// TODO Adapt Me if needed

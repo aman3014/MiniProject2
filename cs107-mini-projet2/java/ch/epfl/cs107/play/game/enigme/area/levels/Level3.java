@@ -40,7 +40,7 @@ public class Level3 extends EnigmeArea {
 	
 	public boolean begin(Window window, FileSystem fileSystem) {
 		
-		key = new Key(this, Orientation.DOWN, new DiscreteCoordinates(1, 3));
+		key = new Key(this, new DiscreteCoordinates(1, 3));
 		
 		torch = new Torch(this, Orientation.DOWN, new DiscreteCoordinates(7, 5), false);
 		

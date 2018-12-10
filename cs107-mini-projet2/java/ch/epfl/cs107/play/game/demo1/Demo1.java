@@ -1,8 +1,3 @@
-/*
- *	Author:      Aman Bansal
- *	Date:        17 nov. 2018
- */
-
 package ch.epfl.cs107.play.game.demo1;
 
 import java.awt.Color;
@@ -15,21 +10,27 @@ import ch.epfl.cs107.play.game.actor.TextGraphics;
 import ch.epfl.cs107.play.game.demo1.actor.MovingRock;
 import ch.epfl.cs107.play.io.FileSystem;
 import ch.epfl.cs107.play.math.Circle;
-import ch.epfl.cs107.play.math.Transform;
 import ch.epfl.cs107.play.math.Vector;
 import ch.epfl.cs107.play.window.Button;
 import ch.epfl.cs107.play.window.Keyboard;
 import ch.epfl.cs107.play.window.Window;
 
+/**
+ * Class Demo1 (implementing Game) is a very basic game with a moving rock and a circle as actors
+ * @author Aman Bansal, Julian Blackwell
+ */
 public class Demo1 implements Game {
 
+	// The actors in the game
 	private Actor actor1;
 	private Actor actor2;
 	private TextGraphics boum;
 	
+	// The functional attributes of the game
 	private Window window;
 	private FileSystem fileSystem;
 	
+	@Override
 	public boolean begin(Window window, FileSystem fileSystem) {
 		
 		//Initializing the two actors in the demo game
@@ -45,17 +46,17 @@ public class Demo1 implements Game {
 		return true;
 	}
 
-
+	@Override
 	public void end() {
 		
 	}
 
+	@Override
 	public String getTitle() {
 		return "Demo1";
 	}
 
-	private static int i = 0;
-
+	@Override
 	public void update(float deltaTime) {
 		
 		Keyboard keyboard = window.getKeyboard();
@@ -68,11 +69,8 @@ public class Demo1 implements Game {
 		
 		//Display the boum message if actor2 is in range of actor1
 		if(actor2.getPosition().sub(actor1.getPosition()).getLength() < 0.2f) {
-			if(i == 0) {
-				boum.setAnchor(actor2.getPosition());
-			}
+			boum.setAnchor(actor2.getPosition());
 			boum.draw(window);
-			++i;
 		}
 		
 		//Drawing actors onto the game window
@@ -80,8 +78,8 @@ public class Demo1 implements Game {
 		actor2.draw(window);
 	}
 
+	@Override
 	public int getFrameRate() {
 		return 24;
 	}
-	
 }
