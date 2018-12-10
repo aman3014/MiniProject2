@@ -1,8 +1,3 @@
-/*
- *	Author:      Aman Bansal
- *	Date:        9 déc. 2018
- */
-
 package ch.epfl.cs107.play.game.enigme.actor;
 
 import java.util.Arrays;
@@ -17,12 +12,24 @@ import ch.epfl.cs107.play.math.DiscreteCoordinates;
 import ch.epfl.cs107.play.math.Vector;
 import ch.epfl.cs107.play.window.Canvas;
 
+/**
+ * Class sage representing a sage (wise old man)
+ * extends AreaEntity; implements Talker
+ * @author Aman Bansal, Julian Blackwell
+ */
 public class Sage extends AreaEntity implements Talker {
 
 	private Animation animation;
 	private Dialog dialog;
 	private Dialog wisdom;
 	
+	/**
+	 * Constructor for a sage
+	 * @param area (Area) : the area to which the sage belongs
+	 * @param orientation (Orientation) : the initial orientation of the sage
+	 * @param position (DiscreteCoordinates) : the position of the sage in the area
+	 * @param wisdom (String) : the wisdom/knowledge the sage gives when interacted with
+	 */
 	public Sage(Area area, Orientation orientation, DiscreteCoordinates position, String wisdom) {
 		super(area, orientation, position);
 		animation = new Animation(this, new Vector(0.13f, 0.13f), 1.5f, 1, "old.man.1");
@@ -61,18 +68,28 @@ public class Sage extends AreaEntity implements Talker {
 		animation.draw(canvas, getOrientation());
 	}
 	
+	@Override
 	public Dialog getDialog() {
 		return dialog;
 	}
 	
+	/**
+	 * Method returning a dialog with the sage's wisdom
+	 * @return (Dialog) : sage's wisdom
+	 */
 	public Dialog getWisdom() {
 		return wisdom;
 	}
 	
+	@Override
 	public Orientation getOrientation() {
 		return super.getOrientation();
 	}
 	
+	/**
+	 * Method used to set the orientation of the sage
+	 * @param orientation (Orientation) : the new orientation
+	 */
 	public void setOrientation(Orientation orientation) {
 		super.setOrientation(orientation);
 	}
