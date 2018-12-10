@@ -40,27 +40,26 @@ public class LevelSelector extends EnigmeArea {
 	
 	public void addAllActors(List<Actor> actors) {
 		DiscreteCoordinates arrivalCoordinates = new DiscreteCoordinates(5, 1);
-		Orientation doorsOrientation = Orientation.DOWN;
 		
 		DiscreteCoordinates door1Position = new DiscreteCoordinates(1, 7);
-		actors.add(new SignalDoor(Logic.TRUE, this, "Level1", arrivalCoordinates, doorsOrientation, door1Position, door1Position));
+		actors.add(new SignalDoor(Logic.TRUE, this, "Level1", arrivalCoordinates, door1Position, door1Position));
 		
 		DiscreteCoordinates door2Position = new DiscreteCoordinates(2, 7);
-		actors.add(new SignalDoor(Logic.TRUE, this, "Level2", arrivalCoordinates, doorsOrientation, door2Position, door2Position));
+		actors.add(new SignalDoor(Logic.TRUE, this, "Level2", arrivalCoordinates, door2Position, door2Position));
 		
 		DiscreteCoordinates door3Position = new DiscreteCoordinates(3, 7);
 		// arrival coordinates are 5, 2 so that the follower of the EnigmePlayer can stand behind him
-		actors.add(new SignalDoor(Logic.TRUE, this, "Level3", new DiscreteCoordinates(5, 2), doorsOrientation, door3Position, door3Position));
+		actors.add(new SignalDoor(Logic.TRUE, this, "Level3", new DiscreteCoordinates(5, 2), door3Position, door3Position));
 		
 		DiscreteCoordinates door4Position = new DiscreteCoordinates(4, 7);
-		actors.add(new SignalDoor(Logic.TRUE, this, "Enigme2", new DiscreteCoordinates(7, 1), doorsOrientation, door4Position, door4Position));
+		actors.add(new SignalDoor(Logic.TRUE, this, "Enigme2", new DiscreteCoordinates(7, 1), door4Position, door4Position));
 		
 		DiscreteCoordinates door5Position = new DiscreteCoordinates(5, 7);
-		actors.add(new SignalDoor(Logic.TRUE, this, "Enigme0", new DiscreteCoordinates(10, 28), doorsOrientation, door5Position, door5Position));
+		actors.add(new SignalDoor(Logic.TRUE, this, "Enigme0", new DiscreteCoordinates(10, 28), door5Position, door5Position));
 		
 		for (int i = 6; i <= 8; ++i) {
 			DiscreteCoordinates doorPosition = new DiscreteCoordinates(i, 7);
-			actors.add(new SignalDoor(Logic.FALSE, this, "LevelSelector", new DiscreteCoordinates(5, 5), doorsOrientation, doorPosition, doorPosition));
+			actors.add(new SignalDoor(Logic.FALSE, this, "LevelSelector", new DiscreteCoordinates(5, 5), doorPosition, doorPosition));
 		}
 	}
 }

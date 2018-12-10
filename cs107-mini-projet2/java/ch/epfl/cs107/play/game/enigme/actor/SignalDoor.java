@@ -6,7 +6,6 @@
 package ch.epfl.cs107.play.game.enigme.actor;
 
 import ch.epfl.cs107.play.game.areagame.Area;
-import ch.epfl.cs107.play.game.areagame.actor.Orientation;
 import ch.epfl.cs107.play.game.areagame.actor.Sprite;
 import ch.epfl.cs107.play.math.DiscreteCoordinates;
 import ch.epfl.cs107.play.signal.logic.Logic;
@@ -17,9 +16,8 @@ public class SignalDoor extends Door {
 	private Logic signal;
 	private final Sprite close = new Sprite("door.close.1", 1, 1.f, this);
 	
-	public SignalDoor(Logic signal, Area area, String destAreaName, DiscreteCoordinates destCoord, Orientation orientation,
-			DiscreteCoordinates position, DiscreteCoordinates... occupiedCells) {
-		super(area, destAreaName, destCoord, orientation, position, occupiedCells);
+	public SignalDoor(Logic signal, Area area, String destAreaName, DiscreteCoordinates destCoord, DiscreteCoordinates position, DiscreteCoordinates... occupiedCells) {
+		super(area, destAreaName, destCoord, position, occupiedCells);
 		this.signal = signal;
 	}
 	

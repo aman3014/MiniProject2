@@ -63,7 +63,7 @@ public class Enigme2 extends EnigmeArea {
 		key = new Key(this, new DiscreteCoordinates(6, 10));
 		
 		DiscreteCoordinates position = new DiscreteCoordinates(7, 0);
-		doorToLevelSelector = new SignalDoor((Logic) key, this, "LevelSelector", new DiscreteCoordinates(4, 6), Orientation.DOWN, position, position);
+		doorToLevelSelector = new SignalDoor((Logic) key, this, "LevelSelector", new DiscreteCoordinates(4, 6), position, position);
 		
 		fastShoes = new FastShoes(this, new DiscreteCoordinates(8, 11));
 		

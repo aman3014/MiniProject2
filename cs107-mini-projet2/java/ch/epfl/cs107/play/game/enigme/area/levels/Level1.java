@@ -27,7 +27,7 @@ public class Level1 extends EnigmeArea {
 	
 	public boolean begin(Window window, FileSystem fileSystem) {
 		DiscreteCoordinates position = new DiscreteCoordinates(5, 0);
-		doorToLevelSelector = new SignalDoor(Logic.TRUE, this, "LevelSelector", new DiscreteCoordinates(1, 6), Orientation.DOWN, position, position);
+		doorToLevelSelector = new SignalDoor(Logic.TRUE, this, "LevelSelector", new DiscreteCoordinates(1, 6), position, position);
 		return super.begin(window, fileSystem);
 	}
 

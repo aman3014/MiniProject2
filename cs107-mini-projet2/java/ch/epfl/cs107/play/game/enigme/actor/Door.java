@@ -25,8 +25,16 @@ public class Door extends AreaEntity {
 	
 	private final Sprite open;
 	
-	public Door(Area area, String destAreaName, DiscreteCoordinates destCoord, Orientation orientation, DiscreteCoordinates position, DiscreteCoordinates...occupiedCells) {
-		super(area, orientation, position);
+	/**
+	 * Constructor for a door
+	 * @param area (Area) : the area to which the door belongs
+	 * @param destAreaName (String) : the name of the destination area of the door
+	 * @param destCoord (DiscreteCoordaintes) : The coordinates of an interactor in the destination area when it interacts through the door
+	 * @param position
+	 * @param occupiedCells
+	 */
+	public Door(Area area, String destAreaName, DiscreteCoordinates destCoord, DiscreteCoordinates position, DiscreteCoordinates...occupiedCells) {
+		super(area, Orientation.DOWN, position);
 		this.destAreaName = destAreaName;
 		this.destCoord = new DiscreteCoordinates(destCoord.x, destCoord.y);
 		this.occupiedCells = new LinkedList<DiscreteCoordinates>();
@@ -71,18 +79,9 @@ public class Door extends AreaEntity {
 	public void draw(Canvas canvas) {		
 		open.draw(canvas);
 	}
-	
-	public Vector getPosition() {
-		return super.getPosition();
-	}
 
 	@Override
 	public void acceptInteraction(AreaInteractionVisitor v) {
 		((EnigmeInteractionVisitor)v).interactWith(this);
-	}
-	
-	// TEMPORARY
-	public Area getOwnerArea() {
-		return super.getOwnerArea();
 	}
 }

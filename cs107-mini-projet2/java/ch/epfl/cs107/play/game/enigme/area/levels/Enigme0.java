@@ -40,7 +40,7 @@ private Actor sageNorth, sageEast, sageSouth, sageWest;
 		key = new Key(this, new DiscreteCoordinates(28, 1));
 		
 		DiscreteCoordinates position = new DiscreteCoordinates(4, 0);
-		doorToLevelSelector = new SignalDoor((Logic) key, this, "LevelSelector", new DiscreteCoordinates(5, 6), Orientation.DOWN, position, position);
+		doorToLevelSelector = new SignalDoor((Logic) key, this, "LevelSelector", new DiscreteCoordinates(5, 6), position, position);
 		
 		sageIntro = new Sage(this, Orientation.UP, new DiscreteCoordinates(10, 24), "The key to the door is found on a far away land. And Remember! Helping others on your way is the key to getting there !");
 		
