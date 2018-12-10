@@ -21,7 +21,7 @@ public class Dialog implements Graphics {
     private final float DY;
 
     /// Number max of char per line of text
-    private static final int MAX_LINE_SIZE = 35;
+    private static final int MAX_LINE_SIZE = 70;
 
     /// Sprite and text graphics line
     private final ImageGraphics sprite;

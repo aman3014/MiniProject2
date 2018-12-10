@@ -8,7 +8,6 @@ package ch.epfl.cs107.play.game.enigme.area;
 import java.util.List;
 
 import ch.epfl.cs107.play.game.actor.Actor;
-import ch.epfl.cs107.play.game.areagame.actor.Background;
 import ch.epfl.cs107.play.game.areagame.actor.Foreground;
 import ch.epfl.cs107.play.game.areagame.actor.Orientation;
 import ch.epfl.cs107.play.game.enigme.actor.SignalDoor;
