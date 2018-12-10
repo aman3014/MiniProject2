@@ -34,10 +34,20 @@ public class Follower extends MovableAreaEntity {
 	}
 	
 	public void update(float deltaTime) {
-		if (parent.isMoving()) {
+		/*if (parent.isMoving()) {
 			if (!move(animationDuration)) {
 				forceMove(animationDuration);
 			}
+			super.update(deltaTime);
+			animationGround.updateAnimationCounter();	
+			animationSky.updateAnimationCounter();
+		} else {
+			animationGround.resetAnimationCounter();
+			animationSky.resetAnimationCounter();
+		}*/
+		
+		if(parent.isMoving()) {
+			forceMove(animationDuration);
 			super.update(deltaTime);
 			animationGround.updateAnimationCounter();	
 			animationSky.updateAnimationCounter();
