@@ -1,8 +1,3 @@
-/*
- *	Author:      Aman Bansal
- *	Date:        23 nov. 2018
- */
-
 package ch.epfl.cs107.play.game.enigme;
 
 import ch.epfl.cs107.play.game.areagame.AreaBehavior;
