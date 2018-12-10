@@ -1,8 +1,3 @@
-/*
- *	Author:      Aman Bansal
- *	Date:        7 déc. 2018
- */
-
 package ch.epfl.cs107.play.game.enigme.area.levels;
 
 import java.util.LinkedList;
@@ -30,7 +25,14 @@ import ch.epfl.cs107.play.signal.logicGates.Not;
 import ch.epfl.cs107.play.signal.logicGates.Or;
 import ch.epfl.cs107.play.window.Window;
 
+/**
+ * Enigme 2 "Room/Level" (instance of EnigmeArea)
+ * @author Julian Blackwell, Aman Bansal
+ *
+ */
 public class Enigme2 extends EnigmeArea {
+	
+	//Actors "living/playing" in the area
 	
 	private Actor doorToLevelSelector;
 	private Actor fastShoes;
@@ -58,8 +60,11 @@ public class Enigme2 extends EnigmeArea {
 		return super.getCameraScaleFactor();
 	}
 	
+	@Override
 	public boolean begin(Window window, FileSystem fileSystem) {
 	
+		//Initialize actor positions and signals
+		
 		key = new Key(this, new DiscreteCoordinates(6, 10));
 		
 		DiscreteCoordinates position = new DiscreteCoordinates(7, 0);
@@ -109,6 +114,9 @@ public class Enigme2 extends EnigmeArea {
 		}
 	}
 	
+	/**
+	 * Initialize SignalRock positions and signals
+	 */
 	private void initializeSignalRocks() {
 		signalRocks = new LinkedList<Actor>();
 		signalRocks.add(new SignalRock(new And((Logic) lever, (Logic) torch), this, new DiscreteCoordinates(6, 3)));
@@ -146,6 +154,9 @@ public class Enigme2 extends EnigmeArea {
 		
 	}
 	
+	/**
+	 * Initialize PressureSwitch positions and states
+	 */
 	private void initializePressureSwitches() {
 		pressureSwitches = new LinkedList<Actor>();
 		
@@ -163,6 +174,7 @@ public class Enigme2 extends EnigmeArea {
 		pressureSwitches.add(new PressureSwitch(this, new DiscreteCoordinates(3, 6), true));
 	}
 	
+	@Override
 	public void update(float deltaTime) {
 		super.update(deltaTime);
 	}
