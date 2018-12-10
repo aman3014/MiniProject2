@@ -1,8 +1,3 @@
-/*
- *	Author:		Julian Blackwell
- *	Date:		5 Dec 2018
- */
-
 package ch.epfl.cs107.play.game.enigme.actor;
 
 import java.util.Collections;
@@ -17,19 +12,37 @@ import ch.epfl.cs107.play.math.DiscreteCoordinates;
 import ch.epfl.cs107.play.signal.logic.Logic;
 import ch.epfl.cs107.play.window.Canvas;
 
+/**
+ * Abstract class Switcher representing an entity whose state can be change by an interactor and who can act as a logic signal
+ * extends AreaEntity; implements Logic and Talker
+ * @author Aman Bansal, Julian Blackwell
+ */
 public abstract class Switcher extends AreaEntity implements Logic, Talker {
 
 	private boolean isOn;
 	private Dialog dialog;
 	
-	public Switcher(Area area, Orientation orientation, DiscreteCoordinates position, boolean isOn) {
-		super(area, orientation, position);
+	/**
+	 * Constructor of a switcher without a dialog 
+	 * @param area (Area) : the area to which the switcher belongs
+	 * @param position (DiscreteCoordinates) : the position of the switcher in its area
+	 * @param isOn (boolean) : the initial state of the switcher
+	 */
+	public Switcher(Area area, DiscreteCoordinates position, boolean isOn) {
+		super(area, Orientation.DOWN, position);
 		this.isOn = isOn;
 		dialog = null;
 	}
 
-	public Switcher(Area area, Orientation orientation, DiscreteCoordinates position, boolean isOn, Dialog dialog) {
-		super(area, orientation, position);
+	/**
+	 * Constructor of a switcher without a dialog 
+	 * @param area (Area) : the area to which the switcher belongs
+	 * @param position (DiscreteCoordinates) : the position of the switcher in its area
+	 * @param isOn (boolean) : the initial state of the switcher
+	 * @param dialog (Dialog) : the dialog which will appear when an interactor interacts with this switcher
+	 */
+	public Switcher(Area area, DiscreteCoordinates position, boolean isOn, Dialog dialog) {
+		super(area, Orientation.DOWN, position);
 		this.isOn = isOn;
 		this.dialog = dialog;
 	}
@@ -61,10 +74,14 @@ public abstract class Switcher extends AreaEntity implements Logic, Talker {
 		return isOn;
 	}
 	
+	/**
+	 * Method which switches the state of the switcher
+	 */
 	public void change() {
 		this.isOn = !this.isOn;
 	}
 	
+	@Override
 	public Dialog getDialog() {
 		return dialog;
 	}
