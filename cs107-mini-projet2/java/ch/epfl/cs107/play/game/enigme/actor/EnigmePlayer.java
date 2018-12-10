@@ -149,16 +149,7 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 		keyW = keyboard.get(Keyboard.W);
 		
 		if (hasFastShoes && keyW.isReleased()) {
-			fastShoesOn = !fastShoesOn;
-			if (fastShoesOn) {
-				animationDelay = ANIMATION_DELAY / 2;
-				animationDuration = ANIMATION_DURATION / 2;
-			} else {
-				animationDelay = ANIMATION_DELAY;
-				animationDuration = ANIMATION_DURATION;
-			}
-			follower.setAnimation(animationDelay, animationDuration);
-			animation.changeAnimationDelay(animationDelay);
+			fastShoesInteraction();
 		}
 		
 		if (isMoving()) {
@@ -206,6 +197,19 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 				animation.resetAnimationCounter();
 			}
 		}
+	}
+	
+	private void fastShoesInteraction() {
+		fastShoesOn = !fastShoesOn;
+		if (fastShoesOn) {
+			animationDelay = ANIMATION_DELAY / 2;
+			animationDuration = ANIMATION_DURATION / 2;
+		} else {
+			animationDelay = ANIMATION_DELAY;
+			animationDuration = ANIMATION_DURATION;
+		}
+		follower.setAnimation(animationDelay, animationDuration);
+		animation.changeAnimationDelay(animationDelay);
 	}
 	
 	public void setIsPassingDoor(Door door) {
