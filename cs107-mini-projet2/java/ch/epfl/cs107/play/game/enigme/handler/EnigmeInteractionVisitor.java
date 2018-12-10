@@ -27,13 +27,22 @@ public interface EnigmeInteractionVisitor extends AreaInteractionVisitor {
 		
 	}
 	
+	/**
+	 * Simulate an interaction between an enigme Interactor and an enigme PressurePlate
+	 * @param pressurePlate (PressurePlate), not null
+	 */
 	public default void interactWith(PressurePlate pressurePlate) {
 		
 	}
 	
+	/**
+	 * SImulate an interaction between an enigme Interactor and an enigme Switcher
+	 * @param switcher (Switcher), not null
+	 */
 	public default void interactWith(Switcher switcher) {
 		
 	}
+	
 	/**
 	 * Simulate an interaction between an enigme Interactor and an EnigmeBehavior EnigmeCell
 	 * @param cell (EnigmeCell), not null
@@ -50,28 +59,43 @@ public interface EnigmeInteractionVisitor extends AreaInteractionVisitor {
 		
 	}
 	
+	/**
+	 * Simulate an interaction between an enigme Interactor and an enigme EnigmePlayer
+	 * @param enigmePlayer (EnigmePlayer), not null
+	 */
 	public default void interactWith(EnigmePlayer enigmePlayer) {
 		
 	}
 
+	/**
+	 * Simulate an interaction between an enigme Interactor and an enigme PressureSwitch
+	 * @param pressureSwitch (PressureSwitch), not null
+	 */
 	public default void interactWith(PressureSwitch pressureSwitch) {
 		
 	}
 
+	/**
+	 * Simulate an interaction between an enigme Interactor and an enigme Teleporter
+	 * @param teleporter (Teleporter), not null
+	 */
 	public default void interactWith(Teleporter teleporter) {
 		
 	}
 
+	/**
+	 * Simulate an interaction between an enigme Interactor and an enigme Sage
+	 * @param sage (Sage), not null
+	 */
 	public default void interactWith(Sage sage) {
 		
 	}
 	
+	/**
+	 * Simulate an interaction between an enigme Interactor and an enigme Egg
+	 * @param egg (Egg), not null
+	 */
 	public default void interactWith(Egg egg) {
 		
 	}
-	
-//	public void interactWith(PressurePlate other);
-
-//	public void interactWith(Rock other);
-
 }
