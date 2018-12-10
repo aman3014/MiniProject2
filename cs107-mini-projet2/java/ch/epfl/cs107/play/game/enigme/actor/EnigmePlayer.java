@@ -421,12 +421,4 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 	public boolean isMoving() {
 		return super.isMoving();
 	}
-	
-	public boolean hasShoes() {
-		return hasFastShoes;
-	}
-	
-	public boolean shoesOn() {
-		return fastShoesOn;
-	}
 }
