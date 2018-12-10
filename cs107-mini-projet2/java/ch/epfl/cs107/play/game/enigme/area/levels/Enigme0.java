@@ -52,7 +52,7 @@ private Actor sageNorth, sageEast, sageSouth, sageWest;
 		sageNorth = new SignalSage(this, Orientation.LEFT, new DiscreteCoordinates(6, 14), "I seek the star that guided the pirates...", Orientation.UP);
 		sageEast = new SignalSage(this, Orientation.DOWN, new DiscreteCoordinates(4, 16), "I seek a glimpse of dawn...", Orientation.RIGHT);
 		sageSouth = new SignalSage(this, Orientation.UP, new DiscreteCoordinates(6, 18), "Help me face the warmth of family...", Orientation.DOWN);
-		sageWest = new SignalSage(this, Orientation.RIGHT, new DiscreteCoordinates(8, 16), "I seek the crimpson eye before twilight...", Orientation.LEFT);
+		sageWest = new SignalSage(this, Orientation.RIGHT, new DiscreteCoordinates(8, 16), "I seek the crimson eye before twilight...", Orientation.LEFT);
 		bonfire = new Bonfire(this, Orientation.DOWN, new DiscreteCoordinates(6, 16), false, new MultipleAnd((Logic)sageNorth,(Logic)sageEast, (Logic)sageSouth, (Logic)sageWest));
 		
 		sageExit = new Sage(this, Orientation.LEFT, new DiscreteCoordinates(29, 1), "I have heard of a hidden path amongst the trees ! After all, who doesn't want to return home ?");
