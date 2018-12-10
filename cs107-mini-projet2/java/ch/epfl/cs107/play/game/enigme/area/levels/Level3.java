@@ -21,7 +21,7 @@ import ch.epfl.cs107.play.signal.logicGates.Or;
 import ch.epfl.cs107.play.window.Window;
 
 /**
- * Level 3 "Room/Level" (instance of EnigmeArea)
+ * Level 3 "Room/Level" (extends EnigmeArea)
  * @author Julian Blackwell, Aman Bansal
  *
  */

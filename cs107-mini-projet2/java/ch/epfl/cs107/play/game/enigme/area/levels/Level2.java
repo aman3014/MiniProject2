@@ -12,7 +12,7 @@ import ch.epfl.cs107.play.signal.logic.Logic;
 import ch.epfl.cs107.play.window.Window;
 
 /**
- * Level 2 "Room/Level" (instance of EnigmeArea)
+ * Level 2 "Room/Level" (extends EnigmeArea)
  * @author Julian Blackwell, Aman Bansal
  *
  */
