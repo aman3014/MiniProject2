@@ -36,10 +36,18 @@ public abstract class AreaEntity extends Entity implements Interactable {
         this.orientation = orientation;
     }
     
+    /**
+     * Getter for the owner Area of the entity
+     * @return ownerArea (Area) : owner Area of entity
+     */
     protected Area getOwnerArea() {
     	return ownerArea;
     }
 
+    /**
+     * Setter for the owner Area of the entity
+     * @param area (Area) : new owner area of entity
+     */
     protected void setOwnerArea(Area area) {
     	ownerArea = area;
     }
@@ -52,14 +60,23 @@ public abstract class AreaEntity extends Entity implements Interactable {
         return currentMainCellCoordinates;
     }
     
+    /**
+     * Getter for the orientation of the entity
+     * @return orientation (Orientation) : orientation of entity
+     */
     protected Orientation getOrientation() {
     	return orientation;
     }
     
+    /**
+     * Setter for the orientation of the entity
+     * @param orientation (Orientation) : new orientation of entity
+     */
     protected void setOrientation(Orientation orientation) {
     	this.orientation = orientation;
     }
     
+    @Override
     protected void setCurrentPosition(Vector v) {
     	if (DiscreteCoordinates.isCoordinates(v)) {
     		v = v.round();
