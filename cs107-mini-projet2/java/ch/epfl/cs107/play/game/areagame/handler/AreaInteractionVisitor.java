@@ -1,9 +1,11 @@
 package ch.epfl.cs107.play.game.areagame.handler;
 
 import ch.epfl.cs107.play.game.areagame.actor.Interactable;
-import ch.epfl.cs107.play.game.areagame.actor.Interactable;
 
-
+/**
+ * Default Interactor-Interactable interaction managing interface
+ * Needs to be redefined
+ */
 public interface AreaInteractionVisitor {
 
     /// Add Interaction method with all non Abstract Interactable
