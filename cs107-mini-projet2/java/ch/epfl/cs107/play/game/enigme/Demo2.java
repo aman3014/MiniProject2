@@ -9,12 +9,6 @@ import ch.epfl.cs107.play.io.FileSystem;
 import ch.epfl.cs107.play.math.DiscreteCoordinates;
 import ch.epfl.cs107.play.window.Window;
 
-/*
- *	Author:      Aman Bansal
- *	Date:        23 nov. 2018
- */
-
-
 /**
  * Demo2 is a concept of Game derived for AreaGame. It introduces the notion of Player
  * When initializing the player is added to the current area
