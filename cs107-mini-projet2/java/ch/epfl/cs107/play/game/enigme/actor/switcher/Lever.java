@@ -10,19 +10,29 @@ import ch.epfl.cs107.play.window.Canvas;
 /**
  * Class Lever which represents a lever
  * extends Switcher;
- * @author amanb
- *
+ * @author Aman Bansal, Julian Blackwell
  */
 public class Lever extends Switcher {
 
 	private Sprite imageOn, imageOff;
 	
+	/**
+	 * Constructor of a lever
+	 * @param area (Area) : the area to which the lever belongs
+	 * @param position (DiscreteCoordinates) : the position of the lever in the area
+	 */
 	public Lever(Area area, DiscreteCoordinates position) {
 		super(area, position, false, new Dialog("Press L to turn me on/off", "dialog.1", area));
 		this.imageOn = new Sprite("lever.big.left", 1, 1.f, this);
 		this.imageOff = new Sprite("lever.big.right", 1, 1.f, this);
 	}
 
+	/**
+	 * Constructor of a lever
+	 * @param area (Area) : the area to which the lever belongs
+	 * @param position (DiscreteCoordinates) : the position of the lever in the area
+	 * @param isOn (boolean) : the initial state of the lever
+	 */
 	public Lever(Area area, DiscreteCoordinates position, boolean isOn) {
 		super(area, position, isOn, new Dialog("Press L to turn me on/off", "dialog.1", area));
 		this.imageOn = new Sprite("lever.big.left", 1, 1.f, this);
