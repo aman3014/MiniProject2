@@ -72,9 +72,9 @@ public class Enigme2 extends EnigmeArea {
 		
 		pressurePlate = new PressurePlate(this, new DiscreteCoordinates(13, 4), 1.9f);
 		
-		lever = new Lever(this, Orientation.DOWN, new DiscreteCoordinates(2, 10));
+		lever = new Lever(this, new DiscreteCoordinates(2, 10));
 		
-		torch = new Torch(this, Orientation.DOWN, new DiscreteCoordinates(6, 11));
+		torch = new Torch(this, new DiscreteCoordinates(6, 11));
 		
 		sage1 = new Sage(this, Orientation.RIGHT, new DiscreteCoordinates(9, 7), "I have heard of some magic shoes which help you move faster !");
 		sage2 = new Sage(this, Orientation.LEFT, new DiscreteCoordinates(5, 7), "It's time to test what you learnt in your logic class !");
@@ -149,18 +149,18 @@ public class Enigme2 extends EnigmeArea {
 	private void initializePressureSwitches() {
 		pressureSwitches = new LinkedList<Actor>();
 		
-		pressureSwitches.add(new PressureSwitch(this, Orientation.DOWN, new DiscreteCoordinates(1, 3), true));
-		pressureSwitches.add(new PressureSwitch(this, Orientation.DOWN, new DiscreteCoordinates(2, 3), true));
-		pressureSwitches.add(new PressureSwitch(this, Orientation.DOWN, new DiscreteCoordinates(3, 3), true));
-		pressureSwitches.add(new PressureSwitch(this, Orientation.DOWN, new DiscreteCoordinates(1, 4), true));
-		pressureSwitches.add(new PressureSwitch(this, Orientation.DOWN, new DiscreteCoordinates(2, 4), false));
-		pressureSwitches.add(new PressureSwitch(this, Orientation.DOWN, new DiscreteCoordinates(3, 4), true));
-		pressureSwitches.add(new PressureSwitch(this, Orientation.DOWN, new DiscreteCoordinates(1, 5), true));
-		pressureSwitches.add(new PressureSwitch(this, Orientation.DOWN, new DiscreteCoordinates(2, 5), false));
-		pressureSwitches.add(new PressureSwitch(this, Orientation.DOWN, new DiscreteCoordinates(3, 5), true));
-		pressureSwitches.add(new PressureSwitch(this, Orientation.DOWN, new DiscreteCoordinates(1, 6), true));
-		pressureSwitches.add(new PressureSwitch(this, Orientation.DOWN, new DiscreteCoordinates(2, 6), true));
-		pressureSwitches.add(new PressureSwitch(this, Orientation.DOWN, new DiscreteCoordinates(3, 6), true));
+		pressureSwitches.add(new PressureSwitch(this, new DiscreteCoordinates(1, 3), true));
+		pressureSwitches.add(new PressureSwitch(this, new DiscreteCoordinates(2, 3), true));
+		pressureSwitches.add(new PressureSwitch(this, new DiscreteCoordinates(3, 3), true));
+		pressureSwitches.add(new PressureSwitch(this, new DiscreteCoordinates(1, 4), true));
+		pressureSwitches.add(new PressureSwitch(this, new DiscreteCoordinates(2, 4), false));
+		pressureSwitches.add(new PressureSwitch(this, new DiscreteCoordinates(3, 4), true));
+		pressureSwitches.add(new PressureSwitch(this, new DiscreteCoordinates(1, 5), true));
+		pressureSwitches.add(new PressureSwitch(this, new DiscreteCoordinates(2, 5), false));
+		pressureSwitches.add(new PressureSwitch(this, new DiscreteCoordinates(3, 5), true));
+		pressureSwitches.add(new PressureSwitch(this, new DiscreteCoordinates(1, 6), true));
+		pressureSwitches.add(new PressureSwitch(this, new DiscreteCoordinates(2, 6), true));
+		pressureSwitches.add(new PressureSwitch(this, new DiscreteCoordinates(3, 6), true));
 	}
 	
 	public void update(float deltaTime) {

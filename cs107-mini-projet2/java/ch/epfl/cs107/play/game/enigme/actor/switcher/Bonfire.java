@@ -16,14 +16,27 @@ import ch.epfl.cs107.play.math.Vector;
 import ch.epfl.cs107.play.signal.logic.Logic;
 import ch.epfl.cs107.play.window.Canvas;
 
+/**
+ * Class Bonfire representing a bonfire which acts as a logic signal
+ * extends Switcher; implements Logic
+ * @author Julian Blackwell, Aman Bansal
+ */
 public class Bonfire extends Switcher implements Logic {
 
 	private Logic signal;
 	private Animation animationOn;
 	private Sprite imageOff;
 	
-	public Bonfire(Area area, Orientation orientation, DiscreteCoordinates position, boolean isOn, Logic signal) {
-		super(area, orientation, position, isOn);
+	/**
+	 * 
+	 * @param area
+	 * @param orientation
+	 * @param position
+	 * @param isOn
+	 * @param signal
+	 */
+	public Bonfire(Area area, DiscreteCoordinates position, boolean isOn, Logic signal) {
+		super(area, position, isOn);
 		this.signal = signal;
 		this.imageOff = new Sprite("fire.off", 0.5f * 2f, 0.65625f * 2f, this);
 		this.animationOn = new Animation(this, Vector.ZERO, 2f, 10, "fire.on.1", "fire.on.2");
