@@ -16,7 +16,7 @@ import ch.epfl.cs107.play.game.enigme.handler.EnigmeInteractionVisitor;
 import ch.epfl.cs107.play.math.DiscreteCoordinates;
 import ch.epfl.cs107.play.window.Canvas;
 
-public abstract class Collectable extends AreaEntity {
+public abstract class Collectable extends AreaEntity implements Talker {
 
 	private boolean collected;
 	private Dialog dialog;

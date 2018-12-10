@@ -17,7 +17,7 @@ import ch.epfl.cs107.play.math.DiscreteCoordinates;
 import ch.epfl.cs107.play.math.Vector;
 import ch.epfl.cs107.play.window.Canvas;
 
-public class Sage extends AreaEntity {
+public class Sage extends AreaEntity implements Talker {
 
 	private Animation animation;
 	private Dialog dialog;

@@ -17,7 +17,7 @@ import ch.epfl.cs107.play.math.DiscreteCoordinates;
 import ch.epfl.cs107.play.signal.logic.Logic;
 import ch.epfl.cs107.play.window.Canvas;
 
-public abstract class Switcher extends AreaEntity implements Logic {
+public abstract class Switcher extends AreaEntity implements Logic, Talker {
 
 	private boolean isOn;
 	private Dialog dialog;
