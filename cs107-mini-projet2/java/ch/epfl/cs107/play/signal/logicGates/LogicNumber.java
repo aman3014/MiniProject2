@@ -11,11 +11,26 @@ import java.util.List;
 import ch.epfl.cs107.play.signal.logic.Logic;
 import ch.epfl.cs107.play.signal.logic.LogicSignal;
 
+
+/**
+ * Class modelizing an interpretation of a set of signals as a power of 2
+ * @author Julian Blackwell
+ * @author Aman Bansal
+ *
+ */
 public class LogicNumber extends LogicSignal {
 
+	//number compared to signalNumber
 	private float nb;
+	
+	// Set/List of signals
 	private List<Logic> e;
 	
+	/**
+	 * Default constructor
+	 * @param nb (float) : number used for comparisons in the computation of LogicNumber and its boolean state
+	 * @param logics (List<Logic>) : set/list of signals
+	 */
 	public LogicNumber(float nb, Logic...logics) {
 		
 		this.nb = nb;
@@ -25,6 +40,8 @@ public class LogicNumber extends LogicSignal {
 			this.e.add(logic);
 		}
 	}
+	
+	// Extends LogicSignal
 	
 	@Override
 	public boolean isOn() {

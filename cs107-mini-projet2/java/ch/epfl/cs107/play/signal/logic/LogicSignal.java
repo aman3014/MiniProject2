@@ -5,7 +5,15 @@
 
 package ch.epfl.cs107.play.signal.logic;
 
+/**
+ * Abstract class modelizing a logic signal
+ * @author Julian Blackwell
+ * @author Aman Bansal
+ *
+ */
 public abstract class LogicSignal implements Logic {
+	
+	//Implements Logic
 	
 	@Override
 	public final float getIntensity() {
