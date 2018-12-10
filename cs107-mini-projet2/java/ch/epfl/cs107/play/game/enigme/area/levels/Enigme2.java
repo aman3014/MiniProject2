@@ -27,6 +27,7 @@ import ch.epfl.cs107.play.signal.logic.Logic;
 import ch.epfl.cs107.play.signal.logicGates.And;
 import ch.epfl.cs107.play.signal.logicGates.MultipleAnd;
 import ch.epfl.cs107.play.signal.logicGates.Not;
+import ch.epfl.cs107.play.signal.logicGates.Or;
 import ch.epfl.cs107.play.window.Window;
 
 public class Enigme2 extends EnigmeArea {
@@ -118,9 +119,20 @@ public class Enigme2 extends EnigmeArea {
 		signalRocks.add(new SignalRock(Logic.FALSE, this, Orientation.DOWN, new DiscreteCoordinates(10, 9)));
 		signalRocks.add(new SignalRock(Logic.FALSE, this, Orientation.DOWN, new DiscreteCoordinates(10, 10)));
 		
-		Logic oneZeroThing = new MultipleAnd((Logic) pressureSwitches.get(1), (Logic) pressureSwitches.get(4), (Logic) pressureSwitches.get(7), (Logic) pressureSwitches.get(10), 
+		Logic oneZeroThing1 = new MultipleAnd((Logic) pressureSwitches.get(1), (Logic) pressureSwitches.get(4), (Logic) pressureSwitches.get(7), (Logic) pressureSwitches.get(10), 
 				new Not((Logic) pressureSwitches.get(0)), new Not((Logic) pressureSwitches.get(2)), new Not((Logic) pressureSwitches.get(3)), new Not((Logic) pressureSwitches.get(5)),
 				new Not((Logic) pressureSwitches.get(6)), new Not((Logic) pressureSwitches.get(8)), new Not((Logic) pressureSwitches.get(9)), new Not((Logic) pressureSwitches.get(11)));
+		
+		Logic oneZeroThing2 = new MultipleAnd((Logic) pressureSwitches.get(0), (Logic) pressureSwitches.get(3), (Logic) pressureSwitches.get(6), (Logic) pressureSwitches.get(9), 
+				new Not((Logic) pressureSwitches.get(1)), new Not((Logic) pressureSwitches.get(2)), new Not((Logic) pressureSwitches.get(4)), new Not((Logic) pressureSwitches.get(5)),
+				new Not((Logic) pressureSwitches.get(7)), new Not((Logic) pressureSwitches.get(8)), new Not((Logic) pressureSwitches.get(10)), new Not((Logic) pressureSwitches.get(11)));
+				
+		Logic oneZeroThing3 = new MultipleAnd((Logic) pressureSwitches.get(2), (Logic) pressureSwitches.get(5), (Logic) pressureSwitches.get(8), (Logic) pressureSwitches.get(11), 
+				new Not((Logic) pressureSwitches.get(0)), new Not((Logic) pressureSwitches.get(1)), new Not((Logic) pressureSwitches.get(3)), new Not((Logic) pressureSwitches.get(4)),
+				new Not((Logic) pressureSwitches.get(6)), new Not((Logic) pressureSwitches.get(7)), new Not((Logic) pressureSwitches.get(9)), new Not((Logic) pressureSwitches.get(10)));
+		
+		Logic oneZeroThing = new Or(oneZeroThing1, new Or(oneZeroThing2, oneZeroThing3));
+		
 		signalRocks.add(new SignalRock(oneZeroThing, this, Orientation.DOWN, new DiscreteCoordinates(5, 10)));
 		signalRocks.add(new SignalRock(Logic.FALSE, this, Orientation.DOWN, new DiscreteCoordinates(5, 11)));
 		
