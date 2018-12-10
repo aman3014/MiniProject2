@@ -26,6 +26,13 @@ public class Teleporter extends AreaEntity implements Talker {
 	private DiscreteCoordinates arrivalCoordinates;
 	private Orientation arrivalOrientation;
 	
+	/**
+	 * Constructor for a teleporter
+	 * @param area (Area) : the area to which the teleporter belongs
+	 * @param position (DiscreteCoordinates) : the position of the teleporter in the area
+	 * @param arrivalCoordinates (DiscreteCoordinates) : the coordinates of the cell the teleporter sends an interactor to
+	 * @param arrivalOrientation (Orientation) : the orientation of an interactor when it arrives to his destination
+	 */
 	public Teleporter(Area area, DiscreteCoordinates position, DiscreteCoordinates arrivalCoordinates, Orientation arrivalOrientation) {
 		super(area, Orientation.DOWN, position);
 		
@@ -68,14 +75,23 @@ public class Teleporter extends AreaEntity implements Talker {
 		animation.draw(canvas, getOrientation());
 	}
 	
+	/**
+	 * Method returning the arrival orientation of an interactor when it interacts with this teleporter
+	 * @return (Orientation) : the arrival orientation
+	 */
 	public Orientation getArrivalOrientation() {
 		return arrivalOrientation;
 	}
 	
+	/**
+	 * Method returning the destination position of the teleporter
+	 * @return (Vector) : the arrivalCoordinatesVector
+	 */
 	public Vector getArrivalCoordinatesVector() {
 		return arrivalCoordinates.toVector();
 	}
 	
+	@Override
 	public Dialog getDialog() {
 		return dialog;
 	}
