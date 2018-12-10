@@ -21,7 +21,8 @@ public class EnigmeBehavior extends AreaBehavior {
 		DOOR(-65536),			// RGB code of red
 		WATER(-16776961),		// RGB code of blue
 		INDOOR_WALKABLE(-1),
-		OUTDOOR_WALKABLE(-14112955);
+		OUTDOOR_WALKABLE(-14112955),
+		YELLOW(-256);
 		
 		final int type;
 		
@@ -36,6 +37,7 @@ public class EnigmeBehavior extends AreaBehavior {
 				case -16776961 : return WATER;
 				case -1 : return INDOOR_WALKABLE;
 				case -14112955 : return OUTDOOR_WALKABLE;
+				case -256 : return YELLOW;
 				default : return NULL;
 			}
 		}
@@ -76,7 +78,7 @@ public class EnigmeBehavior extends AreaBehavior {
 				return false;
 			}
 			
-			// Exceptional case for a EnigmePlayer who is flying
+			// Exceptional case for an EnigmePlayer who is flying
 			if (entity instanceof EnigmePlayer) {
 				if (((EnigmePlayer)entity).isFlying()) {
 					return true;
