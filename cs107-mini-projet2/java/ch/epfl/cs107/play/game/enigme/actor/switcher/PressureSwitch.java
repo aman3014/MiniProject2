@@ -1,12 +1,6 @@
-/*
- *	Author:		Julian Blackwell
- *	Date:		5 Dec 2018
- */
-
 package ch.epfl.cs107.play.game.enigme.actor.switcher;
 
 import ch.epfl.cs107.play.game.areagame.Area;
-import ch.epfl.cs107.play.game.areagame.actor.Orientation;
 import ch.epfl.cs107.play.game.areagame.actor.Sprite;
 import ch.epfl.cs107.play.game.enigme.actor.Switcher;
 import ch.epfl.cs107.play.math.DiscreteCoordinates;

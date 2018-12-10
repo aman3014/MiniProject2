@@ -1,15 +1,8 @@
-/*
- *	Author:		Julian Blackwell
- *	Date:		10 Dec 2018
- */
-
-package ch.epfl.cs107.play.game.enigme.actor.switcher;
+package ch.epfl.cs107.play.game.enigme.actor;
 
 import ch.epfl.cs107.play.game.areagame.Area;
-import ch.epfl.cs107.play.game.areagame.actor.Orientation;
 import ch.epfl.cs107.play.game.areagame.actor.Sprite;
 import ch.epfl.cs107.play.game.enigme.actor.Animation;
-import ch.epfl.cs107.play.game.enigme.actor.Dialog;
 import ch.epfl.cs107.play.game.enigme.actor.Switcher;
 import ch.epfl.cs107.play.math.DiscreteCoordinates;
 import ch.epfl.cs107.play.math.Vector;
@@ -21,21 +14,20 @@ import ch.epfl.cs107.play.window.Canvas;
  * extends Switcher; implements Logic
  * @author Julian Blackwell, Aman Bansal
  */
-public class Bonfire extends Switcher implements Logic {
+public class SignalBonfire extends Switcher implements Logic {
 
 	private Logic signal;
 	private Animation animationOn;
 	private Sprite imageOff;
 	
 	/**
-	 * 
-	 * @param area
-	 * @param orientation
-	 * @param position
-	 * @param isOn
-	 * @param signal
+	 * Constructor of a bonfire
+	 * @param area (Area) : the area to which the bonfire belongs
+	 * @param position (DiscreteCoordinates) : the position of the bonfire in the area
+	 * @param isOn (boolean) : the initial state of the bonfire
+	 * @param signal (Logic) : the logic signal on which the state of the bonfire depends
 	 */
-	public Bonfire(Area area, DiscreteCoordinates position, boolean isOn, Logic signal) {
+	public SignalBonfire(Area area, DiscreteCoordinates position, boolean isOn, Logic signal) {
 		super(area, position, isOn);
 		this.signal = signal;
 		this.imageOff = new Sprite("fire.off", 0.5f * 2f, 0.65625f * 2f, this);
