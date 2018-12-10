@@ -4,7 +4,6 @@ import ch.epfl.cs107.play.io.FileSystem;
 import ch.epfl.cs107.play.window.Window;
 import ch.epfl.cs107.play.window.Window;
 
-
 public interface Playable extends Updatable{
 
     /**
