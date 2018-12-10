@@ -22,8 +22,10 @@ import ch.epfl.cs107.play.window.Window;
  */
 public class Enigme extends AreaGame {
 
+	//Camera scale factor
 	public final static float enigmeCameraScaleFactor = 22;
 	
+	//Main actors
 	private EnigmePlayer player;
 	private Follower follower;
 
@@ -43,6 +45,7 @@ public class Enigme extends AreaGame {
 			return false;
 		}
 		
+		//Add all levels/rooms to the game
 		addArea(new LevelSelector());
 		addArea(new Level1());
 		addArea(new Level2());
@@ -50,16 +53,17 @@ public class Enigme extends AreaGame {
 		addArea(new Enigme2());
 		addArea(new Enigme0());
 
+		//Set the starting area to LevelSelector
 		setCurrentArea("LevelSelector", false);
 		
+		//Initialize and enter player and follower into the starting area
 		player = new EnigmePlayer(getCurrentArea(), new DiscreteCoordinates(5, 5));
 		player.enterArea(getCurrentArea(), new DiscreteCoordinates(5, 5));
-		
 		follower = new Follower(player);
 		follower.enterArea(getCurrentArea(), new DiscreteCoordinates(5, 6));
-		
 		player.setFollower(follower);
 
+		//Center the camera view onto the player
 		getCurrentArea().setViewCandidate(player);
 		
 		return true;
@@ -74,6 +78,9 @@ public class Enigme extends AreaGame {
     	}
     }
     
+    /**
+     * Change currently used area
+     */
     private void changeCurrentArea() {
     	// Player and his follower leave the current area
     	player.leaveArea(getCurrentArea(), player.getCurrentCells().get(0));

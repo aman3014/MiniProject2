@@ -12,9 +12,19 @@ import ch.epfl.cs107.play.game.enigme.actor.EnigmePlayer;
 import ch.epfl.cs107.play.game.enigme.handler.EnigmeInteractionVisitor;
 import ch.epfl.cs107.play.window.Image;
 import ch.epfl.cs107.play.window.Window;
-
+/**
+ * Behavior of an Enigme Area
+ * @author Julian Blackwell
+ * @author Aman Bansal
+ *
+ */
 public class EnigmeBehavior extends AreaBehavior {
 	
+	/**
+	 * Enumeration describing the types of cell that may occupy the Enigme Area
+	 * @author Julian Blackwell
+	 * @author Aman Bansal
+	 */
 	public enum EnigmeCellType {
 		NULL(0),
 		WALL(-16777216),		// RGB code of black
@@ -26,10 +36,19 @@ public class EnigmeBehavior extends AreaBehavior {
 		
 		final int type;
 		
+		/**
+		 * Default constructor
+		 * @param type (int) : integer value of enigme cell type
+		 */
 		EnigmeCellType(int type) {
 			this.type = type;
 		}
 		
+		/**
+		 * Convert integer value to enigme cell type
+		 * @param type (int) : integer value of enigme cell type
+		 * @return (EnigmeCellType) : type of EnigmeCell (e.g. WALL)
+		 */
 		public static EnigmeCellType toType(int type) {	
 			switch (type) {
 				case -16777216 : return WALL;
@@ -43,9 +62,23 @@ public class EnigmeBehavior extends AreaBehavior {
 		}
 	}
 
+	/**
+	 * Class describing a cell on an Enigme Area grid
+	 * @author Julian Blackwell
+	 * @author Aman Bansal
+	 *
+	 */
 	public class EnigmeCell extends Cell {
+		
+		//nature of the cell
 		private EnigmeCellType nature;
 
+		/**
+		 * Default constructor
+		 * @param x (int) : x coordinate of cell
+		 * @param y (int) : y coordinate of cell
+		 * @param type (EnigmeCellType) : nature of cell
+		 */
 		public EnigmeCell(int x, int y, EnigmeCellType type) {
 			super(x, y);
 			nature = type;
@@ -98,6 +131,11 @@ public class EnigmeBehavior extends AreaBehavior {
 		}
 	}
 	
+	/**
+	 * Default constructor
+	 * @param window (Window) : window of the Engime Area
+	 * @param fileName (String) : name of the file containing the Enigme Area behavior
+	 */
 	public EnigmeBehavior(Window window, String fileName) {
 		super(window, fileName);
 	}
