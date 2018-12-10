@@ -1,8 +1,3 @@
-/*
- *	Author:      Aman Bansal
- *	Date:        5 déc. 2018
- */
-
 package ch.epfl.cs107.play.signal.logic;
 
 import ch.epfl.cs107.play.signal.Signal;
