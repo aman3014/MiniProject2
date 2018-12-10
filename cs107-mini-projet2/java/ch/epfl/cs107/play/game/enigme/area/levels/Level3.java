@@ -64,15 +64,15 @@ public class Level3 extends EnigmeArea {
 		levers.add(new Lever(this, Orientation.DOWN, new DiscreteCoordinates(8, 5)));
 		
 		signalRocks = new LinkedList<Actor>();
-		signalRocks.add(new SignalRock(((Logic) pressurePlate), this, Orientation.DOWN, new DiscreteCoordinates(6, 8)));
+		signalRocks.add(new SignalRock(((Logic) pressurePlate), this, new DiscreteCoordinates(6, 8)));
 		
 		Logic allPressureButtons = new MultipleAnd((Logic)pressureSwitches.get(0), (Logic)pressureSwitches.get(1),
 				(Logic)pressureSwitches.get(2), (Logic)pressureSwitches.get(3), (Logic)pressureSwitches.get(4), 
 				(Logic)pressureSwitches.get(5), (Logic)pressureSwitches.get(6));
-		signalRocks.add(new SignalRock(allPressureButtons, this, Orientation.DOWN, new DiscreteCoordinates(5, 8)));
+		signalRocks.add(new SignalRock(allPressureButtons, this, new DiscreteCoordinates(5, 8)));
 		
 		Logic leversMakeFiveOrTorch = new Or(new MultipleAnd((Logic)levers.get(0), new Not((Logic)levers.get(1)), (Logic)levers.get(2)), (Logic) torch);
-		signalRocks.add(new SignalRock(leversMakeFiveOrTorch, this, Orientation.DOWN, new DiscreteCoordinates(4, 8)));
+		signalRocks.add(new SignalRock(leversMakeFiveOrTorch, this, new DiscreteCoordinates(4, 8)));
 		
 		return super.begin(window, fileSystem);
 	}

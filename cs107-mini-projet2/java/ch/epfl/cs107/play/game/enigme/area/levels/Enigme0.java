@@ -11,7 +11,7 @@ import ch.epfl.cs107.play.game.enigme.actor.SignalRock;
 import ch.epfl.cs107.play.game.enigme.actor.collectable.Egg;
 import ch.epfl.cs107.play.game.enigme.actor.collectable.Key;
 import ch.epfl.cs107.play.game.enigme.actor.switcher.Bonfire;
-import ch.epfl.cs107.play.game.enigme.actor.switcher.SignalSage;
+import ch.epfl.cs107.play.game.enigme.actor.SignalSage;
 import ch.epfl.cs107.play.game.enigme.area.EnigmeArea;
 import ch.epfl.cs107.play.io.FileSystem;
 import ch.epfl.cs107.play.math.DiscreteCoordinates;
@@ -53,7 +53,7 @@ private Actor sageNorth, sageEast, sageSouth, sageWest;
 		sageExit = new Sage(this, Orientation.LEFT, new DiscreteCoordinates(29, 1), "I have heard of a hidden path amongst the trees ! After all, who doesn't want to return home ?");
 		
 		egg = new Egg(this, new DiscreteCoordinates(15, 15));
-		signalRock = new SignalRock((Logic)bonfire, this, Orientation.DOWN, new DiscreteCoordinates(16, 15));
+		signalRock = new SignalRock((Logic)bonfire, this, new DiscreteCoordinates(16, 15));
 		
 		if (!super.begin(window, fileSystem)) {
 			return false;

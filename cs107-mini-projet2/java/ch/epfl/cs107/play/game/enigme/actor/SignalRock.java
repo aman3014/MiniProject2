@@ -1,8 +1,3 @@
-/*
- *	Author:      Aman Bansal
- *	Date:        5 déc. 2018
- */
-
 package ch.epfl.cs107.play.game.enigme.actor;
 
 import java.util.Collections;
@@ -18,13 +13,24 @@ import ch.epfl.cs107.play.math.DiscreteCoordinates;
 import ch.epfl.cs107.play.signal.logic.Logic;
 import ch.epfl.cs107.play.window.Canvas;
 
+/**
+ * Class Signal Rock representing a rock dependent on a Logic signal; extends AreaEntity
+ * @author Aman Bansal, Julian Blackwell
+ */
 public class SignalRock extends AreaEntity {
 
 	private Logic signal;
 	private Sprite image;
 	
-	public SignalRock(Logic signal, Area area, Orientation orientation, DiscreteCoordinates position) {
-		super(area, orientation, position);
+	/**
+	 * 
+	 * @param signal
+	 * @param area
+	 * @param orientation
+	 * @param position
+	 */
+	public SignalRock(Logic signal, Area area, DiscreteCoordinates position) {
+		super(area, Orientation.DOWN, position);
 		this.signal = signal;
 		this.image = new Sprite("rock.3", 1, 1.f, this);
 	}

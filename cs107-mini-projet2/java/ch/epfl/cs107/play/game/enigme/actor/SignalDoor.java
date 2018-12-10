@@ -20,19 +20,21 @@ public class SignalDoor extends Door {
 	 * @param signal (Logic) : the logic signal on which the signal door depends
 	 * @param area (Area) : the area to which the signal door belongs
 	 * @param destAreaName (String) : the name of the destination area of the signal door
-	 * @param destCoord (DiscreteCoordinates
-	 * @param position
-	 * @param occupiedCells
+	 * @param destCoord (DiscreteCoordinates) : the coordinates of an interactor in the destination area when it interacts through the signal door
+	 * @param position (DiscreteCoordinates) : the coordinates of the signal door in the area
+	 * @param occupiedCells (DiscreteCoordinates...) : the coordinates of the cells occupied by the signal door
 	 */
 	public SignalDoor(Logic signal, Area area, String destAreaName, DiscreteCoordinates destCoord, DiscreteCoordinates position, DiscreteCoordinates... occupiedCells) {
 		super(area, destAreaName, destCoord, position, occupiedCells);
 		this.signal = signal;
 	}
 	
+	@Override
 	public boolean isCellInteractable() {
 		return signal.isOn();
 	}
 	
+	@Override
 	public void draw(Canvas canvas) {
 		if (signal.isOn()) {
 			super.draw(canvas);

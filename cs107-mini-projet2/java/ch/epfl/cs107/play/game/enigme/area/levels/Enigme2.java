@@ -111,13 +111,13 @@ public class Enigme2 extends EnigmeArea {
 	
 	private void initializeSignalRocks() {
 		signalRocks = new LinkedList<Actor>();
-		signalRocks.add(new SignalRock(new And((Logic) lever, (Logic) torch), this, Orientation.DOWN, new DiscreteCoordinates(6, 3)));
-		signalRocks.add(new SignalRock((Logic) pressurePlate, this, Orientation.DOWN, new DiscreteCoordinates(6, 4)));
-		signalRocks.add(new SignalRock(Logic.FALSE, this, Orientation.DOWN, new DiscreteCoordinates(6, 5)));
+		signalRocks.add(new SignalRock(new And((Logic) lever, (Logic) torch), this, new DiscreteCoordinates(6, 3)));
+		signalRocks.add(new SignalRock((Logic) pressurePlate, this, new DiscreteCoordinates(6, 4)));
+		signalRocks.add(new SignalRock(Logic.FALSE, this, new DiscreteCoordinates(6, 5)));
 
-		signalRocks.add(new SignalRock(Logic.FALSE, this, Orientation.DOWN, new DiscreteCoordinates(9, 10)));
-		signalRocks.add(new SignalRock(Logic.FALSE, this, Orientation.DOWN, new DiscreteCoordinates(10, 9)));
-		signalRocks.add(new SignalRock(Logic.FALSE, this, Orientation.DOWN, new DiscreteCoordinates(10, 10)));
+		signalRocks.add(new SignalRock(Logic.FALSE, this, new DiscreteCoordinates(9, 10)));
+		signalRocks.add(new SignalRock(Logic.FALSE, this, new DiscreteCoordinates(10, 9)));
+		signalRocks.add(new SignalRock(Logic.FALSE, this, new DiscreteCoordinates(10, 10)));
 		
 		Logic oneZeroThing1 = new MultipleAnd((Logic) pressureSwitches.get(1), (Logic) pressureSwitches.get(4), (Logic) pressureSwitches.get(7), (Logic) pressureSwitches.get(10), 
 				new Not((Logic) pressureSwitches.get(0)), new Not((Logic) pressureSwitches.get(2)), new Not((Logic) pressureSwitches.get(3)), new Not((Logic) pressureSwitches.get(5)),
@@ -133,16 +133,16 @@ public class Enigme2 extends EnigmeArea {
 		
 		Logic oneZeroThing = new Or(oneZeroThing1, new Or(oneZeroThing2, oneZeroThing3));
 		
-		signalRocks.add(new SignalRock(oneZeroThing, this, Orientation.DOWN, new DiscreteCoordinates(5, 10)));
-		signalRocks.add(new SignalRock(Logic.FALSE, this, Orientation.DOWN, new DiscreteCoordinates(5, 11)));
+		signalRocks.add(new SignalRock(oneZeroThing, this, new DiscreteCoordinates(5, 10)));
+		signalRocks.add(new SignalRock(Logic.FALSE, this, new DiscreteCoordinates(5, 11)));
 		
-		signalRocks.add(new SignalRock(Logic.FALSE, this, Orientation.DOWN, new DiscreteCoordinates(6, 9)));
-		signalRocks.add(new SignalRock(Logic.FALSE, this, Orientation.DOWN, new DiscreteCoordinates(7, 9)));
-		signalRocks.add(new SignalRock(Logic.FALSE, this, Orientation.DOWN, new DiscreteCoordinates(7, 10)));
-		signalRocks.add(new SignalRock(Logic.FALSE, this, Orientation.DOWN, new DiscreteCoordinates(7, 11)));
+		signalRocks.add(new SignalRock(Logic.FALSE, this, new DiscreteCoordinates(6, 9)));
+		signalRocks.add(new SignalRock(Logic.FALSE, this, new DiscreteCoordinates(7, 9)));
+		signalRocks.add(new SignalRock(Logic.FALSE, this, new DiscreteCoordinates(7, 10)));
+		signalRocks.add(new SignalRock(Logic.FALSE, this, new DiscreteCoordinates(7, 11)));
 
-		signalRocks.add(new SignalRock(Logic.FALSE, this, Orientation.DOWN, new DiscreteCoordinates(5, 11)));
-		signalRocks.add(new SignalRock(Logic.FALSE, this, Orientation.DOWN, new DiscreteCoordinates(5, 11)));
+		signalRocks.add(new SignalRock(Logic.FALSE, this, new DiscreteCoordinates(5, 11)));
+		signalRocks.add(new SignalRock(Logic.FALSE, this, new DiscreteCoordinates(5, 11)));
 		
 	}
 	
