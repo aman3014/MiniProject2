@@ -7,6 +7,12 @@ import ch.epfl.cs107.play.game.enigme.actor.Switcher;
 import ch.epfl.cs107.play.math.DiscreteCoordinates;
 import ch.epfl.cs107.play.window.Canvas;
 
+/**
+ * Class Lever which represents a lever
+ * extends Switcher;
+ * @author amanb
+ *
+ */
 public class Lever extends Switcher {
 
 	private Sprite imageOn, imageOff;
