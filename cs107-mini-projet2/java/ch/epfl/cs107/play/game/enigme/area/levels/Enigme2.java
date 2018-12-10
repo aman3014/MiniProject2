@@ -77,7 +77,7 @@ public class Enigme2 extends EnigmeArea {
 		
 		sage1 = new Sage(this, Orientation.RIGHT, new DiscreteCoordinates(9, 7), "I have heard of some magic shoes which help you move faster !");
 		sage2 = new Sage(this, Orientation.LEFT, new DiscreteCoordinates(5, 7), "It's time to test what you learnt in your logic class !");
-		sage3 = new Sage(this, Orientation.DOWN, new DiscreteCoordinates(12, 8), "Press W to wear/take off your magic shoes. I should warn you though, you may lose your child if you wear magic shoes while teleporting !");
+		sage3 = new Sage(this, Orientation.DOWN, new DiscreteCoordinates(11, 8), "Press W to wear/take off your magic shoes. I should warn you though, you may lose your child if you wear magic shoes while teleporting !");
 		
 		initializePressureSwitches();
 		initializeSignalRocks();

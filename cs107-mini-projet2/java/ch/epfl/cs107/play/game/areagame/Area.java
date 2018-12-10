@@ -3,12 +3,10 @@ package ch.epfl.cs107.play.game.areagame;
 import ch.epfl.cs107.play.game.Playable;
 import ch.epfl.cs107.play.game.actor.Actor;
 import ch.epfl.cs107.play.game.actor.TextGraphics;
-import ch.epfl.cs107.play.game.areagame.actor.Foreground;
 import ch.epfl.cs107.play.game.areagame.actor.Interactable;
 import ch.epfl.cs107.play.game.areagame.actor.Interactor;
 import ch.epfl.cs107.play.io.FileSystem;
 import ch.epfl.cs107.play.math.DiscreteCoordinates;
-import ch.epfl.cs107.play.math.TextAlign;
 import ch.epfl.cs107.play.math.Transform;
 import ch.epfl.cs107.play.math.Vector;
 import ch.epfl.cs107.play.window.Button;
@@ -179,8 +177,8 @@ public abstract class Area implements Playable {
 		played = true;
 		paused = false;
 		
-		unpause = new TextGraphics("Game PAUSED -> Press Space to unpause", 0.7f, Color.BLACK, null, 0.2f, true, false,
-                Vector.ZERO, null, null, 1, 10000);
+		unpause = new TextGraphics("Game PAUSED -> Press Space to unpause", 0.7f, Color.BLACK, null, 0.2f, true, false, Vector.ZERO, null, null, 1, 1000);
+		
 		return true;
     }
     
