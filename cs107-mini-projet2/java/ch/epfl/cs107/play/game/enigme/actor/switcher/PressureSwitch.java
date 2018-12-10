@@ -16,14 +16,14 @@ public class PressureSwitch extends Switcher {
 
 	private Sprite imageOn, imageOff;
 	
-	public PressureSwitch(Area area, Orientation orientation, DiscreteCoordinates position) {
-		super(area, orientation, position, false);
+	public PressureSwitch(Area area, DiscreteCoordinates position) {
+		super(area, position, false);
 		this.imageOn = new Sprite("GroundLightOn", 1, 1.f, this);
 		this.imageOff = new Sprite("GroundLightOff", 1, 1.f, this);
 	}
 	
-	public PressureSwitch(Area area, Orientation orientation, DiscreteCoordinates position, boolean isOn) {
-		super(area, orientation, position, isOn);
+	public PressureSwitch(Area area, DiscreteCoordinates position, boolean isOn) {
+		super(area, position, isOn);
 		this.imageOn = new Sprite("GroundLightOn", 1, 1.f, this);
 		this.imageOff = new Sprite("GroundLightOff", 1, 1.f, this);
 	}

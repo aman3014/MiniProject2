@@ -17,14 +17,14 @@ public class Lever extends Switcher {
 
 	private Sprite imageOn, imageOff;
 	
-	public Lever(Area area, Orientation orientation, DiscreteCoordinates position) {
-		super(area, orientation, position, false, new Dialog("Press L to turn me on/off", "dialog.1", area));
+	public Lever(Area area, DiscreteCoordinates position) {
+		super(area, position, false, new Dialog("Press L to turn me on/off", "dialog.1", area));
 		this.imageOn = new Sprite("lever.big.left", 1, 1.f, this);
 		this.imageOff = new Sprite("lever.big.right", 1, 1.f, this);
 	}
 
-	public Lever(Area area, Orientation orientation, DiscreteCoordinates position, boolean isOn) {
-		super(area, orientation, position, isOn, new Dialog("Press L to turn me on/off", "dialog.1", area));
+	public Lever(Area area, DiscreteCoordinates position, boolean isOn) {
+		super(area, position, isOn, new Dialog("Press L to turn me on/off", "dialog.1", area));
 		this.imageOn = new Sprite("lever.big.left", 1, 1.f, this);
 		this.imageOff = new Sprite("lever.big.right", 1, 1.f, this);
 	}

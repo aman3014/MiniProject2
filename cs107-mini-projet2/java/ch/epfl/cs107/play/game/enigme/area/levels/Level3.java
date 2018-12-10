@@ -42,7 +42,7 @@ public class Level3 extends EnigmeArea {
 		
 		key = new Key(this, new DiscreteCoordinates(1, 3));
 		
-		torch = new Torch(this, Orientation.DOWN, new DiscreteCoordinates(7, 5), false);
+		torch = new Torch(this, new DiscreteCoordinates(7, 5), false);
 		
 		pressurePlate = new PressurePlate(this, new DiscreteCoordinates(9, 8));
 		
@@ -50,18 +50,18 @@ public class Level3 extends EnigmeArea {
 		signalDoor = new SignalDoor(((Logic)key), this, "LevelSelector", new DiscreteCoordinates(3, 6),	signalDoorPosition, signalDoorPosition);
 		
 		pressureSwitches = new LinkedList<Actor>();
-		pressureSwitches.add(new PressureSwitch(this, Orientation.DOWN, new DiscreteCoordinates(4, 4)));
-		pressureSwitches.add(new PressureSwitch(this, Orientation.DOWN, new DiscreteCoordinates(5, 4)));
-		pressureSwitches.add(new PressureSwitch(this, Orientation.DOWN, new DiscreteCoordinates(6, 4)));
-		pressureSwitches.add(new PressureSwitch(this, Orientation.DOWN, new DiscreteCoordinates(5, 5)));
-		pressureSwitches.add(new PressureSwitch(this, Orientation.DOWN, new DiscreteCoordinates(4, 6)));
-		pressureSwitches.add(new PressureSwitch(this, Orientation.DOWN, new DiscreteCoordinates(5, 6)));
-		pressureSwitches.add(new PressureSwitch(this, Orientation.DOWN, new DiscreteCoordinates(6, 6)));
+		pressureSwitches.add(new PressureSwitch(this, new DiscreteCoordinates(4, 4)));
+		pressureSwitches.add(new PressureSwitch(this, new DiscreteCoordinates(5, 4)));
+		pressureSwitches.add(new PressureSwitch(this, new DiscreteCoordinates(6, 4)));
+		pressureSwitches.add(new PressureSwitch(this, new DiscreteCoordinates(5, 5)));
+		pressureSwitches.add(new PressureSwitch(this, new DiscreteCoordinates(4, 6)));
+		pressureSwitches.add(new PressureSwitch(this, new DiscreteCoordinates(5, 6)));
+		pressureSwitches.add(new PressureSwitch(this, new DiscreteCoordinates(6, 6)));
 
 		levers = new LinkedList<Actor>();
-		levers.add(new Lever(this, Orientation.DOWN, new DiscreteCoordinates(10, 5)));
-		levers.add(new Lever(this, Orientation.DOWN, new DiscreteCoordinates(9, 5)));
-		levers.add(new Lever(this, Orientation.DOWN, new DiscreteCoordinates(8, 5)));
+		levers.add(new Lever(this, new DiscreteCoordinates(10, 5)));
+		levers.add(new Lever(this, new DiscreteCoordinates(9, 5)));
+		levers.add(new Lever(this, new DiscreteCoordinates(8, 5)));
 		
 		signalRocks = new LinkedList<Actor>();
 		signalRocks.add(new SignalRock(((Logic) pressurePlate), this, new DiscreteCoordinates(6, 8)));
