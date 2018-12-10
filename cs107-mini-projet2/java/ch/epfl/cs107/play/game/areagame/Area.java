@@ -252,18 +252,10 @@ public abstract class Area implements Playable {
     		unpause.draw(window);
     	}
     	
-    	Foreground foreground = null;
+//    	Foreground foreground = null;
     	
     	for (int i = 0; i < actors.size(); ++i) {
-    		if (actors.get(i) instanceof Foreground) {
-    			foreground = (Foreground) actors.get(i);
-    		} else {
-    			actors.get(i).draw(window);
-    		}
-    	}
-    	
-    	if (foreground != null) {
-    		foreground.draw(window);
+   			actors.get(i).draw(window);
     	}
     }
    
