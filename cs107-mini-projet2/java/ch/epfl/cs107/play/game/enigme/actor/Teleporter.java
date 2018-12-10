@@ -1,8 +1,3 @@
-/*
- *	Author:      Aman Bansal
- *	Date:        9 déc. 2018
- */
-
 package ch.epfl.cs107.play.game.enigme.actor;
 
 import java.util.Arrays;
@@ -17,6 +12,11 @@ import ch.epfl.cs107.play.math.DiscreteCoordinates;
 import ch.epfl.cs107.play.math.Vector;
 import ch.epfl.cs107.play.window.Canvas;
 
+/**
+ * Class Teleporter representing an entity which allows an interactor to teleport to a new cell
+ * extends AreaEntity; implements Talker
+ * @author Julian Blackwell, Aman Bansal
+ */
 public class Teleporter extends AreaEntity implements Talker {
 
 	private Animation animation;
