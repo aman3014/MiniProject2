@@ -3,7 +3,6 @@ package ch.epfl.cs107.play.game.enigme;
 import ch.epfl.cs107.play.game.actor.Actor;
 import ch.epfl.cs107.play.game.areagame.AreaGame;
 import ch.epfl.cs107.play.game.enigme.actor.Demo2Player;
-import ch.epfl.cs107.play.game.enigme.actor.EnigmePlayer;
 import ch.epfl.cs107.play.game.enigme.area.demo2.Room0;
 import ch.epfl.cs107.play.game.enigme.area.demo2.Room1;
 import ch.epfl.cs107.play.io.FileSystem;
@@ -15,12 +14,21 @@ import ch.epfl.cs107.play.window.Window;
  *	Date:        23 nov. 2018
  */
 
+
+/**
+ * Demo2 is a concept of Game derived for AreaGame. It introduces the notion of Player
+ * When initializing the player is added to the current area
+ */
 public class Demo2 extends AreaGame {	
 
+	//Camera scale factor
 	public final static float demo2CameraScaleFactor = 22;
+	
+	//Arrival coordinates for levelSelector & level1
 	private final DiscreteCoordinates LEVEL_SELECTOR_POSITION = new DiscreteCoordinates(5, 5);
 	private final DiscreteCoordinates LEVEL1_POSITION = new DiscreteCoordinates(5, 2);
 	
+	//Main actor
 	private Actor actor;
 
 	@Override
@@ -39,19 +47,24 @@ public class Demo2 extends AreaGame {
 			return false;
 		}
 		
+		//add levels/rooms to game
 		addArea(new Room0());
 		addArea(new Room1());
 		
+		//set the starting area as the level selector
 		setCurrentArea("LevelSelector", false);
 		
+		//Initialize and enter the main actor into the starting area
 		actor = new Demo2Player(getCurrentArea(), LEVEL_SELECTOR_POSITION);
 		((Demo2Player)actor).enterArea(getCurrentArea(), LEVEL_SELECTOR_POSITION);
 		
+		//Center the camera view on the main actor
 		getCurrentArea().setViewCandidate(actor);
 
 		return true;
 	 }
 	 
+	 @Override
 	 public void update(float deltaTime) {
 		 super.update(deltaTime);
 		 if (((Demo2Player)actor).isPassingDoor()) {
@@ -60,6 +73,9 @@ public class Demo2 extends AreaGame {
 		 }
 	 }
 
+	 /**
+	  * Change current area used in game & make the main actor leave the old area to enter the new one
+	  */
 	 private void changeCurrentArea() {
 		 if (getCurrentArea().getTitle().equals("LevelSelector")) {
 			 ((Demo2Player)actor).leaveArea(getCurrentArea(), ((Demo2Player)actor).getCurrentCells().get(0));
@@ -82,6 +98,8 @@ public class Demo2 extends AreaGame {
 			
 			((Demo2Player)actor).enterArea(getCurrentArea(), LEVEL_SELECTOR_POSITION);
 		 }
+		 
+		 //Center the camera view on the main actor
 		 getCurrentArea().setViewCandidate(actor);
 	 }
 }
