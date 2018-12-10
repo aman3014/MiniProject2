@@ -8,6 +8,8 @@ package ch.epfl.cs107.play.game.enigme.area;
 import java.util.List;
 
 import ch.epfl.cs107.play.game.actor.Actor;
+import ch.epfl.cs107.play.game.areagame.actor.Background;
+import ch.epfl.cs107.play.game.areagame.actor.Foreground;
 import ch.epfl.cs107.play.game.areagame.actor.Orientation;
 import ch.epfl.cs107.play.game.enigme.actor.SignalDoor;
 import ch.epfl.cs107.play.io.FileSystem;
@@ -16,7 +18,7 @@ import ch.epfl.cs107.play.signal.logic.Logic;
 import ch.epfl.cs107.play.window.Window;
 
 public class LevelSelector extends EnigmeArea {
-		
+			
 	@Override
 	public String getTitle() {
 		return "LevelSelector";
@@ -28,7 +30,13 @@ public class LevelSelector extends EnigmeArea {
 	}
 	
 	public boolean begin(Window window, FileSystem fileSystem) {
-		return super.begin(window, fileSystem);
+		if (!super.begin(window, fileSystem)) {
+			return false;
+		}
+
+		registerActor(new Foreground(this));
+		
+		return true;
 	}
 	
 	public void addAllActors(List<Actor> actors) {

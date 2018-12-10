@@ -71,5 +71,4 @@ public class Background extends Entity {
     public void draw(Canvas canvas) {
         sprite.draw(canvas);
     }
-
 }

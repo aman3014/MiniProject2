@@ -30,6 +30,7 @@ public abstract class EnigmeArea extends Area {
 			areaBehavior = new EnigmeBehavior(window, getTitle());
 			setBehavior(areaBehavior);
 			registerActor(new Background(this));
+			
 			actors = new LinkedList<>();
 			addAllActors(actors);
 			for (Actor actor : actors) {
