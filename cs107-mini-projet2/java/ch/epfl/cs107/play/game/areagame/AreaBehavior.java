@@ -1,11 +1,11 @@
 package ch.epfl.cs107.play.game.areagame;
 
-import ch.epfl.cs107.play.game.areagame.io.ResourcePath;
-
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import ch.epfl.cs107.play.game.areagame.io.ResourcePath;
 import ch.epfl.cs107.play.game.areagame.actor.Interactable;
 import ch.epfl.cs107.play.game.areagame.actor.Interactor;
 import ch.epfl.cs107.play.game.areagame.handler.AreaInteractionVisitor;
@@ -25,15 +25,23 @@ public abstract class AreaBehavior
 		private DiscreteCoordinates coordinates;
 		private Set<Interactable> interactables;
 		
+		/**
+		 * Cell Constructor which initializes the cell with 
+		 * its coordinates and an empty list of interactables it contains
+		 * @param x
+		 * @param y
+		 */
 		public Cell (int x, int y) {
 			this.coordinates = new DiscreteCoordinates(x, y);
 			this.interactables = new HashSet<>();
 		}
 		
+		@Override
 		public List<DiscreteCoordinates> getCurrentCells() {
 			return Arrays.asList(coordinates);
 		}
 		
+		@Override
 		public boolean takeCellSpace() {
 			for (Interactable interactable : interactables) {
 				if (interactable.takeCellSpace()) {
@@ -43,18 +51,42 @@ public abstract class AreaBehavior
 			return false;
 		}
 
+		/**
+		 * Method determining if an entity can enter this cell
+		 * Note : Needs to be redefined
+		 * @param entity (Interactable) : interactable which wants to enter this cell
+		 * @return boolean : true if the entity can enter this cell
+		 */
 		abstract protected boolean canEnter(Interactable entity);
 		
+		/**
+		 * Method determining if an entity can leave this cell
+		 * Note : Needs to be redefined
+		 * @param entity (Interactable) : interactable which wants to enter this cell
+		 * @return boolean : true if the entity can leave this cell
+		 */
 		abstract protected boolean canLeave(Interactable entity);
 		
-		private void enter(Interactable i) {
-			interactables.add(i);
+		/**
+		 * Method used for the addition of an interactable to this cell
+		 * @param interactable (Interactable) : interactable which needs to be added to this cell
+		 */
+		private void enter(Interactable interactable) {
+			interactables.add(interactable);
 		}
 		
-		private void leave(Interactable i) {
-			interactables.remove(i);
+		/**
+		 * Method used for the removal of an interactable from this cell
+		 * @param interactable (Interactable) : interactable which needs to be removed from this cell
+		 */
+		private void leave(Interactable interactable) {
+			interactables.remove(interactable);
 		}
 		
+		/**
+		 * Method which calls the interaction function of the interactor for each of the cell-interactable interactables in this cell
+		 * @param interactor
+		 */
 		private void cellInteractionOf(Interactor interactor) {
 			for	(Interactable interactable : interactables) {
 				if (interactable.isCellInteractable()) {
@@ -63,6 +95,10 @@ public abstract class AreaBehavior
 			}
 		}
 		
+		/**
+		 * Method which calls the interaction function of the interactor for each of the view-interactable interactables in this cell
+		 * @param interactor
+		 */
 		private void viewInteractionOf(Interactor interactor) {
 			for	(Interactable interactable : interactables) {
 				if (interactable.isViewInteractable()) {
@@ -121,7 +157,8 @@ public abstract class AreaBehavior
     }
     
     /**
-	 * Function to initialize cells to avoid using getters (for behaviorMap)
+	 * Function to initialize a 2D table of cells
+	 * Note : Needs to be redefined
 	 * @param behaviorMap (Image): Can be used in overrides
 	 * @return Returns a 2D table of Cells
 	 */
@@ -143,6 +180,12 @@ public abstract class AreaBehavior
     	return height;
     }
     
+    /**
+     * 
+     * @param entity
+     * @param coordinates
+     * @return boolean : true if the entity can leave all of the cells specified by the coordinates in the list
+     */
     public boolean canLeave(Interactable entity, List<DiscreteCoordinates> coordinates) {
     	for (DiscreteCoordinates coord : coordinates) {
     		if (!(cells[coord.x][coord.y].canLeave(entity))) {
@@ -191,6 +234,7 @@ public abstract class AreaBehavior
     protected Cell getCell(DiscreteCoordinates coordinates) {    	
     	return cells[coordinates.x][coordinates.y];
     }
+    
     
     public boolean isInGrid(DiscreteCoordinates coordinates) {
     	if (coordinates.x < cells.length && coordinates.x >= 0 && coordinates.y < cells[coordinates.x].length && coordinates.y >= 0) {
