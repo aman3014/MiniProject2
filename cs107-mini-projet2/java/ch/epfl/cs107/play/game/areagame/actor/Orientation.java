@@ -1,8 +1,6 @@
 package ch.epfl.cs107.play.game.areagame.actor;
 
 import ch.epfl.cs107.play.math.Vector;
-import ch.epfl.cs107.play.math.Vector;
-
 
 public enum Orientation {
 
@@ -58,6 +56,9 @@ public enum Orientation {
         return super.toString()+direction.toString();
     }
     
+    /**
+     * @return (int) : integer value of the enumeration elements
+     */
     public int toInteger() {
     	switch(this) {
     	case DOWN :

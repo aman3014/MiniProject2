@@ -69,7 +69,7 @@ public abstract class MovableAreaEntity extends AreaEntity {
     }	
     
     /**
-     * Function used in a special case for the follower entity
+     * Function used in a special case for the follower entity when its parent is moving and its own move function does not allow the follower to move as well
      * @param framesForMove (int) : number of frames used for simulating motion
      */
     protected void forceMove (int framesForMove) {
