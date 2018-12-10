@@ -11,6 +11,7 @@ import ch.epfl.cs107.play.game.actor.Actor;
 import ch.epfl.cs107.play.game.areagame.actor.Foreground;
 import ch.epfl.cs107.play.game.areagame.actor.Orientation;
 import ch.epfl.cs107.play.game.enigme.actor.SignalDoor;
+import ch.epfl.cs107.play.game.enigme.actor.collectable.Egg;
 import ch.epfl.cs107.play.game.enigme.area.EnigmeArea;
 import ch.epfl.cs107.play.io.FileSystem;
 import ch.epfl.cs107.play.math.DiscreteCoordinates;
@@ -32,6 +33,8 @@ private Actor egg;
 		DiscreteCoordinates position = new DiscreteCoordinates(5, 0);
 		doorToLevelSelector = new SignalDoor(Logic.TRUE, this, "LevelSelector", new DiscreteCoordinates(1, 6), Orientation.DOWN, position, position);
 		
+		egg = new Egg(this, Orientation.DOWN, new DiscreteCoordinates(8, 10));
+		
 		if (!super.begin(window, fileSystem)) {
 			return false;
 		}
@@ -44,5 +47,6 @@ private Actor egg;
 	@Override
 	protected void addAllActors(List<Actor> actors) {
 		actors.add(doorToLevelSelector);
+		actors.add(egg);
 	}
 }
