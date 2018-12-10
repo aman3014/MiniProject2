@@ -19,23 +19,31 @@ import ch.epfl.cs107.play.signal.logic.Logic;
 import ch.epfl.cs107.play.signal.logicGates.MultipleAnd;
 import ch.epfl.cs107.play.window.Window;
 
+/**
+ * Enigme 0 "Room/Level" (instance of EnigmeArea)
+ * @author Julian Blackwell, Aman Bansal
+ *
+ */
 public class Enigme0 extends EnigmeArea {
 	
-private Actor doorToLevelSelector;
-
-private Actor egg;
-private Actor signalRock;
-private Actor bonfire;
-private Actor key;
-private Actor sageIntro, sageExit;
-private Actor sageNorth, sageEast, sageSouth, sageWest;
+	//Actors "living/playing" in the area
+	private Actor doorToLevelSelector;
+	private Actor egg;
+	private Actor signalRock;
+	private Actor bonfire;
+	private Actor key;
+	private Actor sageIntro, sageExit;
+	private Actor sageNorth, sageEast, sageSouth, sageWest;
 	
 	@Override
 	public String getTitle() {
 		return "Enigme0";
 	}
 	
+	@Override
 	public boolean begin(Window window, FileSystem fileSystem) {
+		
+		//Initialize actors
 		
 		key = new Key(this, new DiscreteCoordinates(28, 1));
 		
