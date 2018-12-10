@@ -9,13 +9,17 @@ import java.util.List;
 
 import ch.epfl.cs107.play.game.actor.Actor;
 import ch.epfl.cs107.play.game.areagame.actor.Foreground;
-import ch.epfl.cs107.play.game.areagame.actor.Orientation;
 import ch.epfl.cs107.play.game.enigme.actor.SignalDoor;
 import ch.epfl.cs107.play.io.FileSystem;
 import ch.epfl.cs107.play.math.DiscreteCoordinates;
 import ch.epfl.cs107.play.signal.logic.Logic;
 import ch.epfl.cs107.play.window.Window;
 
+/**
+ * Level Selector "Room/Level" (instance of EnigmeArea)
+ * @author Julian Blackell, Aman Bansal
+ *
+ */
 public class LevelSelector extends EnigmeArea {
 			
 	@Override
@@ -28,6 +32,7 @@ public class LevelSelector extends EnigmeArea {
 		return super.getCameraScaleFactor();
 	}
 	
+	@Override
 	public boolean begin(Window window, FileSystem fileSystem) {
 		if (!super.begin(window, fileSystem)) {
 			return false;
@@ -38,6 +43,7 @@ public class LevelSelector extends EnigmeArea {
 		return true;
 	}
 	
+	@Override
 	public void addAllActors(List<Actor> actors) {
 		DiscreteCoordinates arrivalCoordinates = new DiscreteCoordinates(5, 1);
 		
