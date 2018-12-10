@@ -7,5 +7,9 @@ package ch.epfl.cs107.play.game.enigme.actor;
  */
 public interface Talker {
 	
+	/**
+	 * Method returning the dialog proper to the entity implementing Talker
+	 * @return (Dialog) : the entity's dialog
+	 */
 	public abstract Dialog getDialog();
 }

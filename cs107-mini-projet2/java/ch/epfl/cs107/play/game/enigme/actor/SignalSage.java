@@ -1,8 +1,3 @@
-/*
- *	Author:		Julian Blackwell
- *	Date:		10 Dec 2018
- */
-
 package ch.epfl.cs107.play.game.enigme.actor;
 
 import ch.epfl.cs107.play.game.areagame.Area;

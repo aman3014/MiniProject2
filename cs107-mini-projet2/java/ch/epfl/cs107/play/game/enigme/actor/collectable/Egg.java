@@ -23,7 +23,7 @@ public class Egg extends Collectable {
 	 * @param position (DiscreteCoordinates) : the position of the egg in the area
 	 */
 	public Egg(Area area, DiscreteCoordinates position) {
-		super(area, position, new Dialog("Press L to collect the egg", "dialog.1", area));
+		super(area, position, new Dialog("Press L to collect the egg. The egg will enable you to change to flying mode at anytime by pressing F !", "dialog.1", area));
 		this.image = new Sprite("egg.1", 0.75f, 0.75f, this, null, new Vector(0.125f, 0.125f));
 	}
 
