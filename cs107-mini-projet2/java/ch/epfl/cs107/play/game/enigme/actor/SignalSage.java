@@ -7,7 +7,7 @@ import ch.epfl.cs107.play.math.DiscreteCoordinates;
 import ch.epfl.cs107.play.signal.logic.Logic;
 
 /**
- * Class SageSignal representing a sage which acts as a logic signal
+ * Class SignalSage representing a sage which acts as a logic signal
  * extends Sage; implements Logic
  * @author Aman Bansal, Julian Blackwell
  */
