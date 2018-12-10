@@ -95,6 +95,10 @@ abstract public class AreaGame implements Game {
     	currentArea.update(deltaTime);
     }
     
+    /**
+     * Protected getter for the current area of the areagame
+     * @return currentArea (Area) : current area of the areagame
+     */
     protected Area getCurrentArea() {
     	return currentArea;
     }
