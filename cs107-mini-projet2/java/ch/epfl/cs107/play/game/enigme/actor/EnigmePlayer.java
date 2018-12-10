@@ -368,7 +368,7 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 		// Return the cell this actor is facing in a list
 		List<DiscreteCoordinates> fieldOfViewCells = new LinkedList<DiscreteCoordinates>();
 		DiscreteCoordinates cellInFront = getCurrentMainCellCoordinates().jump(this.getOrientation().toVector());
-		if (super.getOwnerArea().isInGrid(cellInFront)) {
+		if (getOwnerArea().isInGrid(cellInFront)) {
 			fieldOfViewCells.add(cellInFront);
 		}
 		return fieldOfViewCells;
@@ -376,7 +376,7 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 
 	@Override
 	public boolean wantsCellInteraction() {
-		return true;
+			return true;
 	}
 
 	@Override

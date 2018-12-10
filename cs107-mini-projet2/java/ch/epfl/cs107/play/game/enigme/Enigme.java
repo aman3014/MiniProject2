@@ -3,6 +3,7 @@ package ch.epfl.cs107.play.game.enigme;
 import ch.epfl.cs107.play.game.areagame.AreaGame;
 import ch.epfl.cs107.play.game.enigme.actor.EnigmePlayer;
 import ch.epfl.cs107.play.game.enigme.actor.Follower;
+import ch.epfl.cs107.play.game.enigme.area.levels.Enigme0;
 import ch.epfl.cs107.play.game.enigme.area.levels.Enigme2;
 import ch.epfl.cs107.play.game.enigme.area.levels.Level1;
 import ch.epfl.cs107.play.game.enigme.area.levels.Level2;
@@ -47,6 +48,7 @@ public class Enigme extends AreaGame {
 		addArea(new Level2());
 		addArea(new Level3());
 		addArea(new Enigme2());
+		addArea(new Enigme0());
 
 		setCurrentArea("LevelSelector", false);
 		

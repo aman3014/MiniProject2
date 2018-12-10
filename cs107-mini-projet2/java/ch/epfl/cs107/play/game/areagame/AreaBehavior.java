@@ -154,6 +154,9 @@ public abstract class AreaBehavior
 
     public boolean canEnter(Interactable entity, List<DiscreteCoordinates> coordinates) {
     	for (DiscreteCoordinates coord : coordinates) {
+    		if (!isInGrid(coord)) {
+    			return false;
+    		}
     		if (!(cells[coord.x][coord.y].canEnter(entity))) {
     			return false;
     		}
@@ -190,7 +193,7 @@ public abstract class AreaBehavior
     }
     
     public boolean isInGrid(DiscreteCoordinates coordinates) {
-    	if (coordinates.x <= cells.length && coordinates.x >= 0 && coordinates.y <= cells[coordinates.x].length && coordinates.y >= 0) {
+    	if (coordinates.x < cells.length && coordinates.x >= 0 && coordinates.y < cells[coordinates.x].length && coordinates.y >= 0) {
     		return true;
     	} else {
     		return false;

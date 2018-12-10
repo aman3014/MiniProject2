@@ -9,7 +9,6 @@ import java.util.List;
 
 import ch.epfl.cs107.play.game.actor.Actor;
 import ch.epfl.cs107.play.game.areagame.actor.Orientation;
-import ch.epfl.cs107.play.game.enigme.actor.Door;
 import ch.epfl.cs107.play.game.enigme.actor.SignalDoor;
 import ch.epfl.cs107.play.game.enigme.area.EnigmeArea;
 import ch.epfl.cs107.play.io.FileSystem;
@@ -24,11 +23,6 @@ public class Level1 extends EnigmeArea {
 	@Override
 	public String getTitle() {
 		return "Level1";
-	}
-
-	@Override
-	public float getCameraScaleFactor() {
-		return super.getCameraScaleFactor();
 	}
 	
 	public boolean begin(Window window, FileSystem fileSystem) {

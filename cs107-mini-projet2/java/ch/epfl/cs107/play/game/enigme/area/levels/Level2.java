@@ -30,11 +30,6 @@ public class Level2 extends EnigmeArea {
 	public String getTitle() {
 		return "Level2";
 	}
-
-	@Override
-	public float getCameraScaleFactor() {
-		return super.getCameraScaleFactor();
-	}
 	
 	public boolean begin(Window window, FileSystem fileSystem) {
 		

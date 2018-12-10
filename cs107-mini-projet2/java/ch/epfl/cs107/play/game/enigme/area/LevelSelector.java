@@ -48,7 +48,10 @@ public class LevelSelector extends EnigmeArea {
 		DiscreteCoordinates door4Position = new DiscreteCoordinates(4, 7);
 		actors.add(new SignalDoor(Logic.TRUE, this, "Enigme2", new DiscreteCoordinates(7, 1), doorsOrientation, door4Position, door4Position));
 		
-		for (int i = 5; i <= 8; ++i) {
+		DiscreteCoordinates door5Position = new DiscreteCoordinates(5, 7);
+		actors.add(new SignalDoor(Logic.TRUE, this, "Enigme0", new DiscreteCoordinates(9, 28), doorsOrientation, door5Position, door5Position));
+		
+		for (int i = 6; i <= 8; ++i) {
 			DiscreteCoordinates doorPosition = new DiscreteCoordinates(i, 7);
 			actors.add(new SignalDoor(Logic.FALSE, this, "LevelSelector", new DiscreteCoordinates(5, 5), doorsOrientation, doorPosition, doorPosition));
 		}
