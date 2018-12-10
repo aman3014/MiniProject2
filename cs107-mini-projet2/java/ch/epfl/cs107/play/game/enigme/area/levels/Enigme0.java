@@ -20,6 +20,8 @@ import ch.epfl.cs107.play.window.Window;
 public class Enigme0 extends EnigmeArea {
 	
 private Actor doorToLevelSelector;
+
+private Actor egg;
 	
 	@Override
 	public String getTitle() {

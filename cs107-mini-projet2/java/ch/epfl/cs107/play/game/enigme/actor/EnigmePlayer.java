@@ -16,6 +16,7 @@ import ch.epfl.cs107.play.game.areagame.actor.Interactor;
 import ch.epfl.cs107.play.game.areagame.actor.MovableAreaEntity;
 import ch.epfl.cs107.play.game.areagame.actor.Orientation;
 import ch.epfl.cs107.play.game.areagame.handler.AreaInteractionVisitor;
+import ch.epfl.cs107.play.game.enigme.actor.collectable.Egg;
 import ch.epfl.cs107.play.game.enigme.actor.collectable.FastShoes;
 import ch.epfl.cs107.play.game.enigme.actor.switcher.PressureSwitch;
 import ch.epfl.cs107.play.game.enigme.handler.EnigmeInteractionVisitor;
@@ -60,6 +61,9 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 	private boolean hasFastShoes;
 	private boolean fastShoesOn;
 	
+	//Useful for flying
+	private boolean hasEgg;
+	
 	// Animation duration in frame number
 	final static int ANIMATION_DURATION = 8;
 	
@@ -78,6 +82,8 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 		animationDuration = ANIMATION_DURATION;
 		hasFastShoes = false;
 		fastShoesOn = false;
+		
+		hasEgg = false;
 		
 		lastOrientation = orientation;
 		
@@ -99,6 +105,8 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 		animationDuration = ANIMATION_DURATION;
 		hasFastShoes = false;
 		fastShoesOn = false;
+		
+		hasEgg = false;
 		
 		lastOrientation = Orientation.DOWN;
 		
@@ -299,6 +307,8 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 				collectable.collect();
 				if (collectable instanceof FastShoes) {
 					hasFastShoes = true;
+				} else if (collectable instanceof Egg) {
+					hasEgg = true;
 				}
 			}
 		}

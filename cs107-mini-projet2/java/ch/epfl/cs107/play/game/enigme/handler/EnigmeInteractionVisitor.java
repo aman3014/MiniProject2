@@ -14,6 +14,7 @@ import ch.epfl.cs107.play.game.enigme.actor.PressurePlate;
 import ch.epfl.cs107.play.game.enigme.actor.Sage;
 import ch.epfl.cs107.play.game.enigme.actor.Switcher;
 import ch.epfl.cs107.play.game.enigme.actor.Teleporter;
+import ch.epfl.cs107.play.game.enigme.actor.collectable.Egg;
 import ch.epfl.cs107.play.game.enigme.actor.switcher.PressureSwitch;
 
 public interface EnigmeInteractionVisitor extends AreaInteractionVisitor {
@@ -62,6 +63,10 @@ public interface EnigmeInteractionVisitor extends AreaInteractionVisitor {
 	}
 
 	public default void interactWith(Sage sage) {
+		
+	}
+	
+	public default void interactWith(Egg egg) {
 		
 	}
 	
