@@ -1,8 +1,3 @@
-/*
- *	Author:      Aman Bansal
- *	Date:        10 déc. 2018
- */
-
 package ch.epfl.cs107.play.game.enigme.area.levels;
 
 import java.util.List;
@@ -42,7 +37,7 @@ private Actor sageNorth, sageEast, sageSouth, sageWest;
 	
 	public boolean begin(Window window, FileSystem fileSystem) {
 		
-		key = new Key(this, Orientation.DOWN, new DiscreteCoordinates(28, 1));
+		key = new Key(this, new DiscreteCoordinates(28, 1));
 		
 		DiscreteCoordinates position = new DiscreteCoordinates(4, 0);
 		doorToLevelSelector = new SignalDoor((Logic) key, this, "LevelSelector", new DiscreteCoordinates(5, 6), Orientation.DOWN, position, position);
@@ -57,7 +52,7 @@ private Actor sageNorth, sageEast, sageSouth, sageWest;
 		
 		sageExit = new Sage(this, Orientation.LEFT, new DiscreteCoordinates(29, 1), "I have heard of a hidden path amongst the trees ! After all, who doesn't want to return home ?");
 		
-		egg = new Egg(this, Orientation.DOWN, new DiscreteCoordinates(15, 15));
+		egg = new Egg(this, new DiscreteCoordinates(15, 15));
 		signalRock = new SignalRock((Logic)bonfire, this, Orientation.DOWN, new DiscreteCoordinates(16, 15));
 		
 		if (!super.begin(window, fileSystem)) {
