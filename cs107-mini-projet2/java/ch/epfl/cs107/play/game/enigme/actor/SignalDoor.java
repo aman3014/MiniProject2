@@ -1,8 +1,3 @@
-/*
- *	Author:      Aman Bansal
- *	Date:        5 déc. 2018
- */
-
 package ch.epfl.cs107.play.game.enigme.actor;
 
 import ch.epfl.cs107.play.game.areagame.Area;
@@ -11,11 +6,24 @@ import ch.epfl.cs107.play.math.DiscreteCoordinates;
 import ch.epfl.cs107.play.signal.logic.Logic;
 import ch.epfl.cs107.play.window.Canvas;
 
+/**
+ * Class SignalDoor representing a door which depends on a Logic; extends Door
+ * @author Julian Blackwell, Aman Bansal
+ */
 public class SignalDoor extends Door {
 
 	private Logic signal;
 	private final Sprite close = new Sprite("door.close.1", 1, 1.f, this);
 	
+	/**
+	 * Constructor of a Signal Door
+	 * @param signal (Logic) : the logic signal on which the signal door depends
+	 * @param area (Area) : the area to which the signal door belongs
+	 * @param destAreaName (String) : the name of the destination area of the signal door
+	 * @param destCoord (DiscreteCoordinates
+	 * @param position
+	 * @param occupiedCells
+	 */
 	public SignalDoor(Logic signal, Area area, String destAreaName, DiscreteCoordinates destCoord, DiscreteCoordinates position, DiscreteCoordinates... occupiedCells) {
 		super(area, destAreaName, destCoord, position, occupiedCells);
 		this.signal = signal;

@@ -44,7 +44,7 @@ public class Level3 extends EnigmeArea {
 		
 		torch = new Torch(this, Orientation.DOWN, new DiscreteCoordinates(7, 5), false);
 		
-		pressurePlate = new PressurePlate(this, Orientation.DOWN, new DiscreteCoordinates(9, 8));
+		pressurePlate = new PressurePlate(this, new DiscreteCoordinates(9, 8));
 		
 		DiscreteCoordinates signalDoorPosition = new DiscreteCoordinates(5, 9);
 		signalDoor = new SignalDoor(((Logic)key), this, "LevelSelector", new DiscreteCoordinates(3, 6),	signalDoorPosition, signalDoorPosition);

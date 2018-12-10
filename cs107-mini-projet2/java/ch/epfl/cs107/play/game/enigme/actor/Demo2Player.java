@@ -18,7 +18,7 @@ import ch.epfl.cs107.play.window.Keyboard;
 import ch.epfl.cs107.play.window.Window;
 
 /**
- * Class Demo2Player 
+ * Class Demo2Player, extends MoveableAreaEntity
  * @author Aman Bansal, Julian Blackwell
  */
 public class Demo2Player extends MovableAreaEntity {
