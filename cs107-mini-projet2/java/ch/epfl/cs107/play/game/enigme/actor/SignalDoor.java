@@ -1,8 +1,3 @@
-/*
- *	Author:      Aman Bansal
- *	Date:        5 déc. 2018
- */
-
 package ch.epfl.cs107.play.game.enigme.actor;
 
 import ch.epfl.cs107.play.game.areagame.Area;
@@ -11,6 +6,10 @@ import ch.epfl.cs107.play.math.DiscreteCoordinates;
 import ch.epfl.cs107.play.signal.logic.Logic;
 import ch.epfl.cs107.play.window.Canvas;
 
+/**
+ * Class SignalDoor representing a door which depends on a Logic; extends Door
+ * @author Julian Blackwell, Aman Bansal
+ */
 public class SignalDoor extends Door {
 
 	private Logic signal;
