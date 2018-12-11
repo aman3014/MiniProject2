@@ -409,7 +409,9 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 		
 		@Override
 		public void interactWith(Door door) {
-			setIsPassingDoor(door);
+			if (!flying) {
+				setIsPassingDoor(door);
+			}
 		}
 	}
 	
