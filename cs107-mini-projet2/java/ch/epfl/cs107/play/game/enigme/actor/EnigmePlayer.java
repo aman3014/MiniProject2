@@ -418,6 +418,14 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 		((EnigmeInteractionVisitor) v).interactWith(this);
 	}
 	
+	/**
+	 * Private method allowing to set the last orientation of the player
+	 * @param (Orientation) : last orientation
+	 */
+	private void setLastOrientation(Orientation orientation) {
+		this.lastOrientation = orientation;
+	}
+
 	@Override
 	public List<DiscreteCoordinates> getFieldOfViewCells() {
 		// Return the cell this actor is facing in a list
@@ -457,15 +465,15 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 		area.enterAreaCells(this, position);
 	}
 	
-	// These methods were required for the follower
+	// These methods were required for the implementation of the follower
 	/**
-	 * Method returning the last orientation of the player
+	 * Method returning the last orientation of the enigme player
 	 * @return (Orientation) : the last orientation
 	 */
 	public Orientation getLastOrientation() {
 		return lastOrientation;
 	}
-	
+
 	@Override
 	public Orientation getOrientation() {
 		return super.getOrientation();
