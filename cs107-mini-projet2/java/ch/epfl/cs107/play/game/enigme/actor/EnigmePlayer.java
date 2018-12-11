@@ -314,18 +314,29 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 	 */
 	private class EnigmePlayerHandler implements EnigmeInteractionVisitor {
 
-		private boolean sageWisdomGiven = false;
+		private boolean sageDialogShown = false;
+		
+		@Override
+		public void interactWith(MovingRock movingRock) {
+			movingRock.getDialog().draw(getOwnerArea().getWindow());
+			
+			Button keyL = keyboard.get(Keyboard.L);
+
+			if (keyL.isReleased()) {
+				movingRock.move(ANIMATION_DURATION, getOrientation());
+			}
+		}
 		
 		@Override
 		public void interactWith(Sage sage) {
-			if (!sageWisdomGiven) {
+			if (!sageDialogShown) {
 				sage.getDialog().draw(getOwnerArea().getWindow());
 			}
 			
 			Button keyS = keyboard.get(Keyboard.S);
 			if (keyS.isDown()) {
 				
-				sageWisdomGiven = true;
+				sageDialogShown= true;
 				
 				// Make the sage face the player
 				switch(getOrientation()) {

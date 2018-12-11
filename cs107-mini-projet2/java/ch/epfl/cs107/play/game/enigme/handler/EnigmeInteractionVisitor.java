@@ -5,6 +5,7 @@ import ch.epfl.cs107.play.game.enigme.EnigmeBehavior;
 import ch.epfl.cs107.play.game.enigme.actor.Collectable;
 import ch.epfl.cs107.play.game.enigme.actor.Door;
 import ch.epfl.cs107.play.game.enigme.actor.EnigmePlayer;
+import ch.epfl.cs107.play.game.enigme.actor.MovingRock;
 import ch.epfl.cs107.play.game.enigme.actor.PressurePlate;
 import ch.epfl.cs107.play.game.enigme.actor.Sage;
 import ch.epfl.cs107.play.game.enigme.actor.Switcher;
@@ -91,6 +92,14 @@ public interface EnigmeInteractionVisitor extends AreaInteractionVisitor {
 	 * @param egg (Egg), not null
 	 */
 	public default void interactWith(Egg egg) {
+		
+	}
+	
+	/**
+	 * Simulate an interaction between an enigme Interactor and an enigme moving rock
+	 * @param movingRock (MovingRock), not null
+	 */
+	public default void interactWith(MovingRock movingRock) {
 		
 	}
 }

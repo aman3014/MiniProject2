@@ -4,34 +4,29 @@ import java.util.Collections;
 import java.util.List;
 
 import ch.epfl.cs107.play.game.areagame.Area;
-import ch.epfl.cs107.play.game.areagame.actor.AreaEntity;
+import ch.epfl.cs107.play.game.areagame.actor.MovableAreaEntity;
 import ch.epfl.cs107.play.game.areagame.actor.Orientation;
 import ch.epfl.cs107.play.game.areagame.actor.Sprite;
 import ch.epfl.cs107.play.game.areagame.handler.AreaInteractionVisitor;
 import ch.epfl.cs107.play.game.enigme.handler.EnigmeInteractionVisitor;
 import ch.epfl.cs107.play.math.DiscreteCoordinates;
-import ch.epfl.cs107.play.signal.logic.Logic;
 import ch.epfl.cs107.play.window.Canvas;
 
-/**
- * Class Signal Rock representing a rock dependent on a Logic signal; extends AreaEntity
- * @author Aman Bansal, Julian Blackwell
- */
-public class SignalRock extends AreaEntity {
+public class MovingRock extends MovableAreaEntity implements Talker {
 
-	private Logic signal;
 	private Sprite image;
+	private Dialog dialog;
 	
 	/**
-	 * Constructor for a Signal Rock
-	 * @param signal (Logic) : the logic signal on which the signal rock depends
+	 * Constructor for a Moving Rock
+	 * @param signal (Logic) : the logic signal on which the moving rock depends
 	 * @param area (Area) : the area to which the signal rock belongs
 	 * @param position (DiscreteCoordaintes) : the position of the signal rock in the area
 	 */
-	public SignalRock(Logic signal, Area area, DiscreteCoordinates position) {
+	public MovingRock(Area area, DiscreteCoordinates position) {
 		super(area, Orientation.DOWN, position);
-		this.signal = signal;
-		this.image = new Sprite("rock.3", 1, 1.f, this);
+		this.image = new Sprite("rock.2", 1, 1.f, this);
+		this.dialog = new Dialog("This rocks looks like it can move... (Press L)", "dialog.1", getOwnerArea());
 	}
 	
 	@Override
@@ -46,12 +41,12 @@ public class SignalRock extends AreaEntity {
 
 	@Override
 	public boolean takeCellSpace() {
-		return !signal.isOn();
+		return true;
 	}
 
 	@Override
 	public boolean isViewInteractable() {
-		return false;
+		return true;
 	}
 
 	@Override
@@ -61,8 +56,16 @@ public class SignalRock extends AreaEntity {
 		
 	@Override
 	public void draw(Canvas canvas) {
-		if (!signal.isOn()) {
-			image.draw(canvas);
-		}
+		image.draw(canvas);
+	}
+	
+	public boolean move(int framesForMove, Orientation orientation) {
+		this.setOrientation(orientation);
+		return super.move(framesForMove);
+	}
+
+	@Override
+	public Dialog getDialog() {
+		return dialog;
 	}
 }

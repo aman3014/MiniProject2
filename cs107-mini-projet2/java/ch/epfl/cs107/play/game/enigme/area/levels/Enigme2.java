@@ -5,9 +5,11 @@ import java.util.List;
 
 import ch.epfl.cs107.play.game.actor.Actor;
 import ch.epfl.cs107.play.game.areagame.actor.Orientation;
+import ch.epfl.cs107.play.game.enigme.actor.MovingRock;
 import ch.epfl.cs107.play.game.enigme.actor.PressurePlate;
 import ch.epfl.cs107.play.game.enigme.actor.Sage;
 import ch.epfl.cs107.play.game.enigme.actor.SignalDoor;
+import ch.epfl.cs107.play.game.enigme.actor.SignalMovingRock;
 import ch.epfl.cs107.play.game.enigme.actor.SignalRock;
 import ch.epfl.cs107.play.game.enigme.actor.Teleporter;
 import ch.epfl.cs107.play.game.enigme.actor.collectable.FastShoes;
@@ -40,6 +42,7 @@ public class Enigme2 extends EnigmeArea {
 	private Actor teleporter1;
 	private Actor teleporter2;
 	private Actor pressurePlate;
+	private Actor pressurePlateEnd;
 	private Actor lever;
 	private Actor torch;
 	
@@ -49,6 +52,8 @@ public class Enigme2 extends EnigmeArea {
 	
 	private List<Actor> signalRocks;
 	private List<Actor> pressureSwitches;
+	
+	private Actor signalMovingRock;
 	
 	@Override
 	public String getTitle() {
@@ -85,6 +90,9 @@ public class Enigme2 extends EnigmeArea {
 		sage2 = new Sage(this, Orientation.LEFT, new DiscreteCoordinates(5, 7), "It's time to test what you learnt in your logic class !");
 		sage3 = new Sage(this, Orientation.DOWN, new DiscreteCoordinates(11, 8), "Press W to wear/take off your magic shoes. I should warn you though, don't run too fast - otherwise you may lose your child !");
 		
+		pressurePlateEnd = new PressurePlate(this, new DiscreteCoordinates(7, 5), 0.5f);
+		signalMovingRock = new SignalMovingRock(new And((Logic) key, (Logic) lever), this, new DiscreteCoordinates(10, 4));
+		
 		initializePressureSwitches();
 		initializeSignalRocks();
 		
@@ -99,11 +107,13 @@ public class Enigme2 extends EnigmeArea {
 		actors.add(teleporter1);
 		actors.add(teleporter2);
 		actors.add(pressurePlate);
+		actors.add(pressurePlateEnd);
 		actors.add(lever);
 		actors.add(torch);
 		actors.add(sage1);
 		actors.add(sage2);
 		actors.add(sage3);
+		actors.add(signalMovingRock);
 		
 		for (Actor rock : signalRocks) {
 			actors.add(rock);
@@ -152,6 +162,8 @@ public class Enigme2 extends EnigmeArea {
 		signalRocks.add(new SignalRock(Logic.FALSE, this, new DiscreteCoordinates(5, 11)));
 		signalRocks.add(new SignalRock(Logic.FALSE, this, new DiscreteCoordinates(5, 11)));
 		
+		Logic notKeyAndNotLever = new Not(new And((Logic) key, (Logic) lever));
+		signalRocks.add(new SignalRock(new Or(notKeyAndNotLever, (Logic) pressurePlateEnd), this, new DiscreteCoordinates(7, 2)));
 	}
 	
 	/**
