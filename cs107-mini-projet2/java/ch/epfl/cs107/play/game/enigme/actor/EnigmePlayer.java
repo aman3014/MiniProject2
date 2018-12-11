@@ -1,11 +1,5 @@
-/*
- *	Author:      Aman Bansal
- *	Date:        2 déc. 2018
- */
-
 package ch.epfl.cs107.play.game.enigme.actor;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -26,6 +20,11 @@ import ch.epfl.cs107.play.window.Button;
 import ch.epfl.cs107.play.window.Canvas;
 import ch.epfl.cs107.play.window.Keyboard;
 
+/**
+ * Class EnigmePlayer representing an enigme player in the game
+ * extends MoveableAreaEntity; implements Interactor
+ * @author Aman Bansal, Julian Blackwell
+ */
 public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 	// Useful for interaction with doors
 	private boolean isPassingDoor;
@@ -38,7 +37,9 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 	private Animation animationGround;
 	private Animation animationSky;
 	final static int ANIMATION_DELAY = 4;
+	final static int ANIMATION_DURATION = 8;
 	private int animationDelay;
+	private int animationDuration;
 	
 	// Follower as an attribute is useful for teleportation
 	private Follower follower;
@@ -59,17 +60,19 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 	private final EnigmePlayerHandler handler;
 
 	// Useful for interaction with fastShoes
-	private int animationDuration;
 	private boolean hasFastShoes;
 	private boolean fastShoesOn;
 	
-	//Useful for flying
+	//Useful for flying and interaction with an egg
 	private boolean hasEgg;
 	private boolean flying;
 	
-	// Animation duration in frame number
-	final static int ANIMATION_DURATION = 8;
-	
+	/**
+	 * Constructor for an enigme player
+	 * @param area (Area) : the area to which the enigme player belongs
+	 * @param orientation (Orientation) : the initial orientation of the enigme player
+	 * @param position (DiscreteCoordinates) : the initial position of the enigme player in the area
+	 */
 	public EnigmePlayer(Area area, Orientation orientation, DiscreteCoordinates position) {
 		super(area, orientation, position);
 		
@@ -95,6 +98,11 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 		this.keyboard = this.getOwnerArea().getKeyboard();
 	}
 	
+	/**
+	 * Constructor for an enigme player with default orientation down
+	 * @param area (Area) : the area to which the enigme player belongs
+	 * @param position (DiscreteCoordinates) : the initial position of the enigme player in the area
+	 */
 	public EnigmePlayer(Area area, DiscreteCoordinates position) {
 		super(area, Orientation.DOWN, position);
 
@@ -120,23 +128,40 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 		this.keyboard = this.getOwnerArea().getKeyboard();
 	}
 	
+	/**
+	 * Method indicating if the enigme player is flying
+	 * @return boolean : true if the player is flying
+	 */
 	public boolean isFlying() {
 		return flying;
 	}
 	
+	/**
+	 * Method allowing to set the follower of the enigme player
+	 * @param follower : the new follower of the enigme player
+	 */
 	public void setFollower(Follower follower) {
 		this.follower = follower;
 		follower.setAnimation(animationDelay, animationDuration);
 	}
 
+	@Override
 	public void interactWith(Interactable other) {
 		other.acceptInteraction(handler);
 	}
 	
+	/**
+	 * Method indicating if the enigme player is interacting with a door
+	 * @return (boolean) : true if the enigme player is interacting with a door
+	 */
 	public boolean getIsPassingDoor() {
 		return isPassingDoor;
 	}
 	
+	/**
+	 * Method returning the last door the engime player has passed through
+	 * @return (Door) : the last dooor the player passed through
+	 */
 	public Door getLastDoor() {
 		return lastDoor;
 	}
@@ -152,6 +177,11 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 		downArrow = keyboard.get(Keyboard.DOWN);
 		keyW = keyboard.get(Keyboard.W);
 		keyF = keyboard.get(Keyboard.F);
+		
+		if (flying) {
+			animationDuration = ANIMATION_DURATION;
+			follower.setAnimation(animationDuration);
+		}
 		
 		if (hasFastShoes && keyW.isReleased()) {
 			fastShoesInteraction();
@@ -210,9 +240,12 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 		}
 	}
 	
+	/**
+	 * Private method used to implement the changes induced by the interaction of the enigme player with fast shoes
+	 */
 	private void fastShoesInteraction() {
 		fastShoesOn = !fastShoesOn;
-		if (fastShoesOn) {
+		if (fastShoesOn && !flying) {
 			animationDelay = ANIMATION_DELAY / 2;
 			animationDuration = ANIMATION_DURATION / 2;
 		} else {
@@ -223,6 +256,11 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 		follower.setAnimation(animationDelay, animationDuration);
 	}
 	
+	/**
+	 * Method allowing to set the last passed door of the player
+	 * The attribute isPassingDoor is also updated
+	 * @param door (Door) : the door the enigme player last passed through (the parameter should be null if the last door attributes needs to be reset
+	 */
 	public void setIsPassingDoor(Door door) {
 		if (door == null) {
 			isPassingDoor = false;
@@ -261,10 +299,12 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 		}
 	}
 	
+	@Override
 	public void setCurrentPosition(Vector v) {
 		super.setCurrentPosition(v);
 	}
 	
+	@Override
 	public Area getOwnerArea() {
 		return super.getOwnerArea();
 	}
@@ -344,13 +384,15 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 		
 		@Override
 		public void interactWith(PressurePlate pressurePlate) {
-			pressurePlate.turnOn();
+			if(!flying) {
+				pressurePlate.turnOn();
+			}
 		}
 		
 		@Override
 		public void interactWith(Switcher switcher) {
 			if (switcher instanceof PressureSwitch) {
-				if (!lastMainCellCoordinates.equals(getCurrentMainCellCoordinates())) {
+				if (!(flying || lastMainCellCoordinates.equals(getCurrentMainCellCoordinates()))) {
 					switcher.change();
 				}
 				return;
@@ -376,10 +418,6 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 		((EnigmeInteractionVisitor) v).interactWith(this);
 	}
 	
-	public void setLastOrientation(Orientation orientation) {
-		this.lastOrientation = orientation;
-	}
-
 	@Override
 	public List<DiscreteCoordinates> getFieldOfViewCells() {
 		// Return the cell this actor is facing in a list
@@ -401,23 +439,39 @@ public class EnigmePlayer extends MovableAreaEntity implements Interactor {
 		return true;
 	}
 	
+	/**
+	 * Method which makes the entity leave an area from a given position
+	 * @param area (Area) : the area to be left by the entity
+	 * @param position (DiscreteCoordinates) : the position in the area to be left
+	 */
 	private void leaveAreaCells(Area area, List<DiscreteCoordinates> position) {
 		area.leaveAreaCells(this, position);
 	}
 	
+	/**
+	 * Method which makes the entity enter an area at a given position
+	 * @param area (Area) : the area to be entered by the entity
+	 * @param position (DiscreteCoordinates) : the position in the area to be entered in
+	 */
 	private void enterAreaCells(Area area, List<DiscreteCoordinates> position) {
 		area.enterAreaCells(this, position);
 	}
 	
 	// These methods were required for the follower
+	/**
+	 * Method returning the last orientation of the player
+	 * @return (Orientation) : the last orientation
+	 */
 	public Orientation getLastOrientation() {
 		return lastOrientation;
 	}
 	
+	@Override
 	public Orientation getOrientation() {
 		return super.getOrientation();
 	}
 	
+	@Override
 	public boolean isMoving() {
 		return super.isMoving();
 	}

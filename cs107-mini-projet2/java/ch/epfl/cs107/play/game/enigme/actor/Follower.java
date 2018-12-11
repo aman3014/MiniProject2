@@ -1,8 +1,3 @@
-/*
- *	Author:      Aman Bansal
- *	Date:        7 déc. 2018
- */
-
 package ch.epfl.cs107.play.game.enigme.actor;
 
 import java.util.Arrays;
@@ -16,6 +11,11 @@ import ch.epfl.cs107.play.math.DiscreteCoordinates;
 import ch.epfl.cs107.play.math.Vector;
 import ch.epfl.cs107.play.window.Canvas;
 
+/**
+ * Class Follower represents a character which follows an enigme player in the game Enigme
+ * extends MoveableAreaEntity
+ * @author Aman Bansal, Julian Blackwell
+ */
 public class Follower extends MovableAreaEntity {
 
 	private EnigmePlayer parent;
@@ -24,6 +24,10 @@ public class Follower extends MovableAreaEntity {
 	
 	private int animationDuration;
 		
+	/**
+	 * Constructor for a follower
+	 * @param parent : the parent enigme player of the follower
+	 */
 	public Follower(EnigmePlayer parent) {
 		super(parent.getOwnerArea(), parent.getOrientation(), new DiscreteCoordinates((int) parent.getPosition().sub(parent.getOrientation().toVector()).x,
 																		(int) parent.getPosition().sub(parent.getOrientation().toVector()).y));
@@ -33,6 +37,7 @@ public class Follower extends MovableAreaEntity {
 		this.animationSky = new Animation(Float.MAX_VALUE, this, new Vector(0.25f, 0.32f), 1f, EnigmePlayer.ANIMATION_DELAY, "bird.1");
 	}
 	
+	@Override
 	public void update(float deltaTime) {
 		if(parent.isMoving()) {
 			forceMove(animationDuration);
@@ -91,16 +96,39 @@ public class Follower extends MovableAreaEntity {
 		super.setCurrentPosition(v);
 	}
 	
+	/**
+	 * Method which makes the entity leave an area from a given position
+	 * @param area (Area) : the area to be left by the entity
+	 * @param position (DiscreteCoordinates) : the position in the area to be left
+	 */
 	public void leaveAreaCells(Area area, List<DiscreteCoordinates> position) {
 		area.leaveAreaCells(this, position);
 	}
 	
+	/**
+	 * Method which makes the entity enter an area at a given position
+	 * @param area (Area) : the area to be entered by the entity
+	 * @param position (DiscreteCoordinates) : the position in the area to be entered in
+	 */
 	public void enterAreaCells(Area area, List<DiscreteCoordinates> position) {
 		area.enterAreaCells(this, position);
 	}
 	
+	/**
+	 * Method used to change the animation variables of the follower
+	 * @param animationDelay (int) : the delay in his animation speed
+	 * @param animationDuration (int) : the number of frames he takes for one discrete motion
+	 */
 	public void setAnimation(int animationDelay, int animationDuration) {
 		animationGround.changeAnimationDelay(animationDelay);
+		this.animationDuration = animationDuration;
+	}
+	
+	/**
+	 * Method used to change the animation duration of the follower
+	 * @param animationDuration (int) : the number of frames he takes for one discrete motion
+	 */
+	public void setAnimation(int animationDuration) {
 		this.animationDuration = animationDuration;
 	}
 }
