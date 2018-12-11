@@ -4,18 +4,23 @@ import java.util.Collections;
 import java.util.List;
 
 import ch.epfl.cs107.play.game.areagame.Area;
+import ch.epfl.cs107.play.game.areagame.actor.Interactable;
+import ch.epfl.cs107.play.game.areagame.actor.Interactor;
 import ch.epfl.cs107.play.game.areagame.actor.MovableAreaEntity;
 import ch.epfl.cs107.play.game.areagame.actor.Orientation;
 import ch.epfl.cs107.play.game.areagame.actor.Sprite;
 import ch.epfl.cs107.play.game.areagame.handler.AreaInteractionVisitor;
+import ch.epfl.cs107.play.game.enigme.actor.switcher.PressureSwitch;
 import ch.epfl.cs107.play.game.enigme.handler.EnigmeInteractionVisitor;
 import ch.epfl.cs107.play.math.DiscreteCoordinates;
 import ch.epfl.cs107.play.window.Canvas;
 
-public class MovingRock extends MovableAreaEntity implements Talker {
+public class MovingRock extends MovableAreaEntity implements Interactor, Talker {
 
 	private Sprite image;
 	private Dialog dialog;
+	private MovingRockInteractionHandler handler; 
+	private DiscreteCoordinates lastMainCellCoordinates;
 	
 	/**
 	 * Constructor for a Moving Rock
@@ -27,6 +32,8 @@ public class MovingRock extends MovableAreaEntity implements Talker {
 		super(area, Orientation.DOWN, position);
 		this.image = new Sprite("rock.2", 1, 1.f, this);
 		this.dialog = new Dialog("This rocks looks like it can move... (Press L)", "dialog.1", getOwnerArea());
+		this.handler = new MovingRockInteractionHandler();
+		lastMainCellCoordinates = this.getCurrentMainCellCoordinates();
 	}
 	
 	@Override
@@ -67,5 +74,45 @@ public class MovingRock extends MovableAreaEntity implements Talker {
 	@Override
 	public Dialog getDialog() {
 		return dialog;
+	}
+
+	@Override
+	public List<DiscreteCoordinates> getFieldOfViewCells() {
+		return null;
+	}
+
+	@Override
+	public boolean wantsCellInteraction() {
+		return true;
+	}
+
+	@Override
+	public boolean wantsViewInteraction() {
+		return false;
+	}
+
+	private class MovingRockInteractionHandler implements EnigmeInteractionVisitor {
+		@Override
+		public void interactWith(PressurePlate pressurePlate) {
+			pressurePlate.turnOn();
+		}
+		
+		@Override
+		public void interactWith(PressureSwitch pressureSwitch) {
+			if (!lastMainCellCoordinates.equals(getCurrentMainCellCoordinates())) {
+				pressureSwitch.change();
+			}
+		}
+	}
+
+	@Override
+	public void update(float deltaTime) {
+		lastMainCellCoordinates = getCurrentMainCellCoordinates();
+		super.update(deltaTime);
+	}
+	
+	@Override
+	public void interactWith(Interactable other) {
+		other.acceptInteraction(handler);
 	}
 }
