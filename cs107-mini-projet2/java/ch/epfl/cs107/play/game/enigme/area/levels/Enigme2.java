@@ -90,7 +90,7 @@ public class Enigme2 extends EnigmeArea {
 		sage2 = new Sage(this, Orientation.LEFT, new DiscreteCoordinates(5, 7), "It's time to test what you learnt in your logic class !");
 		sage3 = new Sage(this, Orientation.DOWN, new DiscreteCoordinates(11, 8), "Press W to wear/take off your magic shoes. I should warn you though, don't run too fast - otherwise you may lose your child !");
 		
-		pressurePlateEnd = new PressurePlate(this, new DiscreteCoordinates(7, 5), 0.5f);
+		pressurePlateEnd = new PressurePlate(this, new DiscreteCoordinates(7, 5), 0.2f);
 		signalMovingRock = new SignalMovingRock(new And((Logic) key, (Logic) lever), this, new DiscreteCoordinates(10, 4));
 		
 		initializePressureSwitches();
