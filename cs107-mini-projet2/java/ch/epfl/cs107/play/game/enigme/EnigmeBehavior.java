@@ -110,7 +110,7 @@ public class EnigmeBehavior extends AreaBehavior {
 			// Exceptional case for an EnigmePlayer who is flying
 			if (entity instanceof EnigmePlayer) {
 				if (((EnigmePlayer)entity).isFlying()) {
-					return !this.nature.equals(EnigmeCellType.WALL);
+					return true;
 				}
 			}
 			
