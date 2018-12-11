@@ -69,7 +69,8 @@ public abstract class MovableAreaEntity extends AreaEntity {
     }	
     
     /**
-     * Function used in the specific case to initiate the movement of a Follower when its parent is moving
+     * Function used to initiate the movement of a Follower when its parent is moving
+     * No conditions are checked because they were checked while initiating the movement of the parent
      * @param framesForMove (int) : number of frames used for simulating motion
      */
     protected void forceMove (int framesForMove) {
