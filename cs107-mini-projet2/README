@@ -1,1 +1,38 @@
 README FILE
+
+Pour choisir le type de jeu désiré, il suffit de modifier l'initialization de l'attribut final
+game (Game) dans le fichier Play (ligne 32) avec ces trois options:
+- new Demo1();
+- new Demo2();
+- new Enigme();
+
+Les jeux Demo1 et Demo2 se comportent de même façon et doivent être joués de la même façon
+décrite dans l'énoncé du projet.
+
+
+Voici quelques précisions pour le jeu Enigme:
+
+- Pour faire bouger le personnage, il faut simplement utiliser les touches directionelles.
+
+- Il n'y a pas d'ordre spécifique à suivre lors du jeu, l'utilisateur est libre de rentrer dans
+n'importe quelle porte ouverte. 
+
+- Le niveau 1 est accessible, mais vide.
+
+- Le niveau 2 contient simplement une pomme que l'utilisateur peut ramasser
+
+- Le niveau 3 contient une énigme à résoudre, identique à celle décrite dans l'énoncé du projet.
+Il suffit simplement de ramasser la clé pour déverouiller la porte de sortie et d'activer tous les
+boutons pressions (en forme de I) au centre de la salle.
+
+- Le niveau 4 contient la première énigme que nous avons implémenté. Le but est de se libérer de la salle.
+Voici comment compléter le niveau. Il suffit d'abord d'utiliser le téléporteur (l'entité clignotante) pour
+atteindre les bottes rapides. Une fois ramassées, activer l'utilisation des bottes rapides pour se déplacer
+plus rapidement. Ensuite, il faut emprunter le deuxième téléporteur pour revenir en arrière. Il faut maintenant
+marcher sur la plaque de pression pour ouvrir un passage vers l'autre partie de la salle. Une fois arrivé
+dans l'autre partie, il faut transformer le motif de boutons pressions pour passer du "0" à un "1". N'importe 
+quelle colonne verticale activée avec les deux autres colonnes désactivées déverouille l'accès à la clé qu'il faut
+ramasser. Ensuite, activer la torche et le levier pour rouvrir l'accès à l'autre partie de la salle. Finalement, 
+il faut pousser le rocher sur la plaque de pression pour faire disparaitre le rocher qui bloque la sortie.
+
+- Le niveau 5 contient la deuxiéme énigme que nous avons implémenté, qui est plus facile à résoudre.
