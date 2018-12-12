@@ -66,6 +66,13 @@ public class MovingRock extends MovableAreaEntity implements Interactor, Talker 
 		image.draw(canvas);
 	}
 	
+	/**
+	 * Method permitting to simulate the movement the rock in a particular direction (determined by the parameter orientation)
+	 * Calls the MoveableAreaEntity's move function
+	 * @param framesForMove (int) : the number of frames this motion will take
+	 * @param orientation (Orientation) : determines the direction of the motion
+	 * @return (boolean) : true if the motion can be carried out
+	 */
 	public boolean move(int framesForMove, Orientation orientation) {
 		this.setOrientation(orientation);
 		return super.move(framesForMove);
