@@ -180,7 +180,7 @@ public abstract class Area implements Playable {
 		played = true;
 		paused = false;
 		
-		unpause = new TextGraphics("Game PAUSED -> Press Space to unpause", 0.7f, Color.BLACK, null, 0.2f, true, false, Vector.ZERO, null, null, 1, 1000);
+		unpause = new TextGraphics("Game Paused -> Press Space to continue where you left off", 0.7f, Color.BLACK, null, 0.2f, true, false, Vector.ZERO, null, null, 1, 1000);
 		
 		return true;
     }
