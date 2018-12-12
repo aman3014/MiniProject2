@@ -35,4 +35,37 @@ quelle colonne verticale activée avec les deux autres colonnes désactivées d�
 ramasser. Ensuite, activer la torche et le levier pour rouvrir l'accès à l'autre partie de la salle. Finalement, 
 il faut pousser le rocher sur la plaque de pression pour faire disparaitre le rocher qui bloque la sortie.
 
-- Le niveau 5 contient la deuxiéme énigme que nous avons implémenté, qui est plus facile à résoudre.
+- Le niveau 5 contient la deuxiéme énigme que nous avons implémenté, qui est plus facile à résoudre. Il suffit
+d'abord d'ortienter les vieux sages positionés autour de la pile de bois vers cette pile pour l'allumer en
+feu de bois. Ceci va permettre l'accès à un oeuf qu'il faut manger/ramasser pour débloquer le pouvoir de voler. 
+En volant, il est maintenant possible de franchir des cases qui n'étaient pas franchissables sur le sol comme
+l'eau ou un mur. Il faut voler vers le coin en bas à droite pour aller ramasser une clé et puis se diriger vers
+le coin en bas à gauche, où il y aura la porte de sortie.
+
+
+Voici quelques précisions à tenir en compte pendant le jeu:
+
+- Si le personnage principal est dans une case voisine d'un objet ramassable, il suffit de l'orienter vers l'objet
+et d'appuyer sur la touche 'L' pour prendre l'objet.
+
+- Si les bottes rapides sont optenues, il suffit d'appuyer sur la touche 'W' pour activer/désactiver le déplacement
+rapide.
+
+- Si un oeuf est mangé, il suffit d'appuyer sur la touche 'F' pour activer/désactiver le pouvoir de voler.
+Attention! En volant, le personnage ne peut plus franchir de portes et ne peut pas activer les boutons pressions
+ou une plaque de pression.
+
+- Pour utiliser un téléporteur, il suffit d'appuyer sur la touche 'ENTER' si le personnage est sur la même case
+que le téléporteur.
+
+- Il est possible de parler aux sages si le personnage est dans une case voisine. Il suffit de garder la 
+touche 'L' enfoncée pour recevoir leurs mots de sagesse. Si ils ne sont pas orientés vers le personnage, 
+ils seront très polis et se tournent pour faire face à leur interlocuteur.
+
+- Pour mettre le jeu en pause, il suffit d'appuyer sur la touche 'ESPACE'. Idem pour quitter le mode pause.
+
+- En doute, les objets affichent des instructions sur leur utilisation si le personnage leur fait face dans
+une case voisine.
+
+
+Merci d'avoir joué à notre jeu :)
