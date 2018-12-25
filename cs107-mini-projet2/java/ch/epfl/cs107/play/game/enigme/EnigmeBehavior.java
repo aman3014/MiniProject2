@@ -143,8 +143,8 @@ public class EnigmeBehavior extends AreaBehavior {
 	 */
 	public Cell[][] initializeCells(Image behaviorMap) {
 		Cell[][] cells = new EnigmeCell[this.getHeight()][this.getWidth()];
-		for (int i = 0; i < cells.length; ++i) {
-			for (int j = 0; j < cells[0].length; ++j) {
+		for (int i = 0; i < cells.length; i++) {
+			for (int j = 0; j < cells[0].length; j++) {
 				cells[i][j] = new EnigmeCell(i, j, EnigmeCellType.toType(behaviorMap.getRGB(this.getHeight()-1-j, i)));
 			}
 		}

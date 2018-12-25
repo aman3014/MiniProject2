@@ -5,6 +5,7 @@ import java.util.List;
 import ch.epfl.cs107.play.game.actor.Actor;
 import ch.epfl.cs107.play.game.areagame.actor.Foreground;
 import ch.epfl.cs107.play.game.areagame.actor.Orientation;
+import ch.epfl.cs107.play.game.enigme.actor.MovingMob;
 import ch.epfl.cs107.play.game.enigme.actor.Sage;
 import ch.epfl.cs107.play.game.enigme.actor.SignalDoor;
 import ch.epfl.cs107.play.game.enigme.actor.SignalRock;
@@ -34,6 +35,7 @@ public class Enigme0 extends EnigmeArea {
 	private Actor key;
 	private Actor sageIntro, sageExit;
 	private Actor sageNorth, sageEast, sageSouth, sageWest;
+	private Actor mob;
 	
 	@Override
 	public String getTitle() {
@@ -63,6 +65,8 @@ public class Enigme0 extends EnigmeArea {
 		egg = new Egg(this, new DiscreteCoordinates(15, 15));
 		signalRock = new SignalRock((Logic)bonfire, this, new DiscreteCoordinates(16, 15));
 		
+		mob = new MovingMob(this, Orientation.DOWN, new DiscreteCoordinates(8, 22));
+		
 		if (!super.begin(window, fileSystem)) {
 			return false;
 		}
@@ -85,5 +89,6 @@ public class Enigme0 extends EnigmeArea {
 		actors.add(sageWest);
 		actors.add(sageExit);
 		actors.add(bonfire);
+		actors.add(mob);
 	}
 }

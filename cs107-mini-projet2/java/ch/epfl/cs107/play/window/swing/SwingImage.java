@@ -109,7 +109,7 @@ public final class SwingImage implements Image {
 
     @Override
     public int getRGB(int r, int c){
-        return image.getRGB(c, r);
+    	return image.getRGB(c, r);
     }
     
 }
